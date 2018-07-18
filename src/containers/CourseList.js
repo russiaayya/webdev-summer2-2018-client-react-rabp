@@ -1,9 +1,40 @@
 import React from 'react';
 import CourseRow from "../components/CourseRow";
+import CourseService from "../services/CourseService";
+
 class CourseList extends React.Component {
     constructor() {
         super();
+        this.courseService = CourseService.instance;
     }
+
+    componentDidMount() {
+        this.courseService
+            .findAllCourses()
+            .then((courses) => {
+                console.log(courses);
+                this.setState({courses: courses});
+            });
+    }
+
+    renderCourseRows() {
+        let courses = null;
+
+        console.log(this.state)
+        if(this.state) {
+            courses = this.state.courses.map(
+                function (course) {
+                    return <CourseRow key={course.id}
+                                      course={course}/>
+                }
+            )
+        }
+        return (
+            courses
+        )
+    }
+
+
     render() {
         return (
             <div>
@@ -11,7 +42,7 @@ class CourseList extends React.Component {
                 <table className="table">
                     <thead><tr><th>Title</th></tr></thead>
                     <tbody>
-                        <CourseRow/>
+                    {this.renderCourseRows()}
                     </tbody>
                 </table>
             </div>
