@@ -9,7 +9,10 @@ class ModuleListItem extends React.Component{
             <li className="list-group-item">
                 {this.props.title}
                 <span className="pull-right">
-                <i style={{'marginRight': '5px'}} className="fa fa-trash"></i>
+                <i onClick={() => {
+                    this.props.deleteModule(this.props.id)
+                console.log('hello: '+this.props.id)}
+                } style={{'marginRight': '5px'}} className="fa fa-trash"></i>
                 <i className="fa fa-pencil"></i>
                 </span>
             </li>
