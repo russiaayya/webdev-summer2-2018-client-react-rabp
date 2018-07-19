@@ -66,8 +66,10 @@ class ModuleList extends React.Component {
         console.log(this.state);
         let modules = this.state.modules.map(function (module) {
             return <ModuleListItem key={module.id}
-                                   title={module.title}
-                                   id={module.id}
+                                   courseId = {self.props.courseId}
+                                   // title={module.title}
+                                   // id={module.id}
+                                   module = {module}
                                    deleteModule={self.deleteModule}/>
         })
 
