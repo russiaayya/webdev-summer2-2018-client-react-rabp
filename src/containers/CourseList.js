@@ -8,9 +8,14 @@ class CourseList extends React.Component {
         this.courseService = CourseService.instance;
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
+        this.deleteCourse = this.deleteCourse.bind(this);
     }
 
     componentDidMount() {
+        this.findAllCourses();
+    }
+
+    findAllCourses(){
         this.courseService
             .findAllCourses()
             .then((courses) => {
@@ -20,14 +25,15 @@ class CourseList extends React.Component {
     }
 
     renderCourseRows() {
+        var self = this
         let courses = null;
-
         console.log(this.state)
         if(this.state) {
             courses = this.state.courses.map(
                 function (course) {
                     return <CourseRow key={course.id}
-                                      course={course}/>
+                                      course={course}
+                                      deleteCourse={self.deleteCourse}/>
                 }
             )
         }
@@ -38,13 +44,21 @@ class CourseList extends React.Component {
 
     titleChanged(event) {
         this.setState({
-            course: { title: event.target.value }
+            course: { title: event.target.value}
         });
 
     }
     createCourse() {
-        console.log('create course')
+        this.courseService
+            .createCourse(this.state.course)
+            .then(() => { this.findAllCourses(); });
     }
+
+    deleteCourse = (courseId) => {
+        this.courseService.deleteCourse(courseId)
+            .then(() => this.courseService.findAllCourses())
+            .then(courses => this.setState({courses: courses}))
+    };
 
     render() {
         return (
@@ -52,7 +66,10 @@ class CourseList extends React.Component {
                 <h2>Course List</h2>
                 <table className="table">
                     <thead>
-                    <tr><th>Title</th></tr>
+                    <tr><th>Title</th>
+                        <th>Owned by</th>
+                        <th>Last modified</th>
+                    </tr>
                     <tr>
                         <th><input onChange={this.titleChanged}
                                    className="form-control"
@@ -64,6 +81,10 @@ class CourseList extends React.Component {
                     </thead>
                     <tbody>
                     {this.renderCourseRows()}
+                    {/*{this.state.courses.map((course) =>*/}
+                        {/*<CourseRow key={course.id}*/}
+                                   {/*deleteCourse={this.deleteCourse}*/}
+                                   {/*course={course}/>)}*/}
                     </tbody>
                 </table>
             </div>

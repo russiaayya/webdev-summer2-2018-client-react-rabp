@@ -4,6 +4,7 @@ import ModuleList from './ModuleList';
 import LessonTabs from './LessonTabs';
 import CourseEditor from './CourseEditor';
 import CourseList from "./CourseList";
+import {BrowserRouter as Router} from 'react-router-dom'
 
 // import LessonTabs from './LessonTabs';
 // import TopicPills from './TopicPills';
@@ -11,24 +12,26 @@ import CourseList from "./CourseList";
 class CourseManager extends React.Component{
     render(){
         return (
-            <div className="container-fluid">
-                <h1>Course Manager</h1>
-                <CourseList/>
-                {/*<CourseEditor/>*/}
+            <Router>
+                <div className="container-fluid">
+                    <h1>Course Manager</h1>
+                    <CourseList/>
+                    {/*<CourseEditor/>*/}
 
-                {/*<TopicPills/>*/}
+                    {/*<TopicPills/>*/}
 
-                {/*<LessonTabs/>*/}
+                    {/*<LessonTabs/>*/}
 
-                {/*<ModuleList/>*/}
+                    {/*<ModuleList/>*/}
 
-                {/*<div className="card-deck">*/}
-                    {/*<CourseCard/>*/}
-                    {/*<CourseCard/>*/}
-                    {/*<CourseCard/>*/}
-                    {/*<CourseCard/>*/}
-                {/*</div>*/}
-            </div>
+                    {/*<div className="card-deck">*/}
+                        {/*<CourseCard/>*/}
+                        {/*<CourseCard/>*/}
+                        {/*<CourseCard/>*/}
+                        {/*<CourseCard/>*/}
+                    {/*</div>*/}
+                </div>
+            </Router>
         )
     }
 }

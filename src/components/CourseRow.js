@@ -4,11 +4,27 @@ import React from 'react';
 class CourseRow extends React.Component {
     render() {
         return (
-            <tr><td>
+            <tr>
+                <td>
                 {/*<Link to={`/course/${this.props.course.id}`}>*/}
                     {this.props.course.title}
                 {/*</Link>*/}
-            </td></tr>
+                </td>
+                <td>
+                    me
+                </td>
+                <td>
+                    {this.props.course.modified}
+                </td>
+                <td>
+                    <button className="btn btn-danger"
+                            onClick={() =>
+                                this.props.deleteCourse(this.props.course.id)
+                            }>
+                        Delete
+                    </button>
+                </td>
+            </tr>
         )
     }
 }
