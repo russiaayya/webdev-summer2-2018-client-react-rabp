@@ -8,15 +8,26 @@ class LessonTabItem extends React.Component{
     render(){
         return(
             <li className="nav-item">
-                <a className="nav-link"
-                   href="#">{this.props.lesson.title + " "}
-                    <i onClick={() => {
+                <div className="nav-link">
+                    <Link to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}>
+                        {this.props.lesson.title}
+                    </Link>
+                    <i style={{'marginLeft': '10px'}} onClick={() => {
                         this.props.deleteLesson(this.props.lesson.id)
                         console.log('hello: '+this.props.moduleId)}
                     } className="fa fa-times"></i>
-        </a>
-
+                </div>
             </li>
+        )
+                {/*<a className="nav-link"*/}
+                   {/*href="#">{this.props.lesson.title + " "}*/}
+                    {/*<i onClick={() => {*/}
+                        {/*this.props.deleteLesson(this.props.lesson.id)*/}
+                        {/*console.log('hello: '+this.props.moduleId)}*/}
+                    {/*} className="fa fa-times"></i>*/}
+        {/*</a>*/}
+
+
             // <li className="list-group-item">
             //     {/*<Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>*/}
             //         {/*<Link to={`/module/${this.props.module.id}`}>*/}
@@ -31,7 +42,6 @@ class LessonTabItem extends React.Component{
             //     <i className="fa fa-pencil"></i>
             //     </span>
             // </li>
-        )
     }
 }
 

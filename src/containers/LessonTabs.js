@@ -68,6 +68,7 @@ class LessonTabs extends React.Component{
         let lessons = this.state.lessons.map(function (lesson) {
             return <LessonTabItem key={lesson.id}
                                    courseId = {self.props.courseId}
+                                  moduleId = {self.props.moduleId}
                 // title={module.title}
                 // id={module.id}
                                    lesson = {lesson}
