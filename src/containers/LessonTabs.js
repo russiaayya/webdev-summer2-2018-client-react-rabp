@@ -80,6 +80,15 @@ class LessonTabs extends React.Component{
     render() {
         return(
             <div>
+                <input className="form-control"
+                       onChange={this.titleChanged}
+                       placeholder="title"/>
+                <button onClick={this.createLesson}
+                        className=
+                            "btn btn-primary btn-block">
+                    <i className=
+                           "fa fa-plus"></i>
+                </button>
                 <ul className="nav nav-tabs">
                     {this.renderListOfLessons()}
                     {/*<li className="nav-item"><a className="nav-link active"*/}
