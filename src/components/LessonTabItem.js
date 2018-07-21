@@ -7,8 +7,16 @@ class LessonTabItem extends React.Component{
     }
     render(){
         return(
-            <li className="nav-item"><a className="nav-link"
-        href="#">{this.props.lesson.title}</a></li>
+            <li className="nav-item">
+                <a className="nav-link"
+                   href="#">{this.props.lesson.title + " "}
+                    <i onClick={() => {
+                        this.props.deleteLesson(this.props.lesson.id)
+                        console.log('hello: '+this.props.moduleId)}
+                    } className="fa fa-times"></i>
+        </a>
+
+            </li>
             // <li className="list-group-item">
             //     {/*<Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>*/}
             //         {/*<Link to={`/module/${this.props.module.id}`}>*/}
