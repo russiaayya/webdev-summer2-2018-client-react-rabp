@@ -9,6 +9,10 @@ class CourseList extends React.Component {
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
         this.deleteCourse = this.deleteCourse.bind(this);
+        this.state = {
+            course: {title: ''},
+            courses: []
+        }
     }
 
     componentDidMount() {
@@ -46,11 +50,17 @@ class CourseList extends React.Component {
         this.setState({
             course: { title: event.target.value}
         });
-
     }
     createCourse() {
+        let course;
+        if(this.state.course.title===''){
+            course = {title: "New Course"}
+        }
+        else{
+            course = this.state.course;
+        }
         this.courseService
-            .createCourse(this.state.course)
+            .createCourse(course)
             .then(() => { this.findAllCourses(); });
     }
 
@@ -66,17 +76,17 @@ class CourseList extends React.Component {
                 <h2>Course List</h2>
                 <table className="table">
                     <thead>
-                    <tr><th>Title</th>
-                        <th>Owned by</th>
-                        <th>Last modified</th>
-                    </tr>
                     <tr>
                         <th><input onChange={this.titleChanged}
                                    className="form-control"
                                    id="titleFld"
-                                   placeholder="CS1001"/></th>
+                                   placeholder="New Course Title"/></th>
                         <th><button onClick={this.createCourse}
-                                    className="btn btn-primary">Add</button></th>
+                                    className="btn btn-primary">Add New Course</button></th>
+                    </tr>
+                    <tr><th>Title</th>
+                        <th>Owned by</th>
+                        <th>Last modified</th>
                     </tr>
                     </thead>
                     <tbody>
