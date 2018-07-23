@@ -1,6 +1,7 @@
 import React from 'react';
 import CourseRow from "../components/CourseRow";
 import CourseService from "../services/CourseService";
+import ReactDOM from 'react-dom';
 
 class CourseList extends React.Component {
     constructor() {
@@ -62,6 +63,8 @@ class CourseList extends React.Component {
         this.courseService
             .createCourse(course)
             .then(() => { this.findAllCourses(); });
+        ReactDOM.findDOMNode(this.refs.courseInput).value = "";
+
     }
 
     deleteCourse = (courseId) => {
@@ -77,7 +80,9 @@ class CourseList extends React.Component {
                 <table className="table">
                     <thead>
                     <tr>
-                        <th><input onChange={this.titleChanged}
+                        <th><input id="courseTitle"
+                                   ref="courseInput"
+                                   onChange={this.titleChanged}
                                    className="form-control"
                                    id="titleFld"
                                    placeholder="New Course Title"/></th>
