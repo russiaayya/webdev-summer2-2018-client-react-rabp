@@ -20,13 +20,13 @@ class ModuleListItem extends React.Component{
         for(var i=0;i<mods.length;i++){
             mods[i].style.backgroundColor="white";
         }
-        var mod = document.getElementById(this.props.module.id);
+        var mod = document.getElementById(this.props.module.id+"m");
         mod.style.backgroundColor="#d7f0f7";
     }
 
     render(){
         return(
-            <li id={this.props.module.id} className="list-group-item list-group-item-action module-list">
+            <li id={this.props.module.id+"m"} className="list-group-item list-group-item-action module-list">
                 {/*<Link to={`/module/${this.props.module.id}`}>*/}
                 <Link onClick={this.highlight}
                       to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>

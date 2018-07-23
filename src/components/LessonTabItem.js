@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 class LessonTabItem extends React.Component{
     constructor(props){
         super(props);
+        this.highlight = this.highlight.bind(this);
     }
 
     deleteLesson() {
@@ -15,12 +16,22 @@ class LessonTabItem extends React.Component{
         }
     }
 
+    highlight(){
+        var lessons = document.getElementsByClassName('lesson-tabs');
+        for(var i=0;i<lessons.length;i++){
+            lessons[i].style.backgroundColor="white";
+        }
+        var lesson = document.getElementById(this.props.lesson.id+"l");
+        lesson.style.backgroundColor="#d7f0f7";
+    }
+
     render(){
         return(
-            <li className="nav-item">
+            <li id={this.props.lesson.id+"l"} className="nav-item lesson-tabs">
                 <div className="nav-link">
                     {/*<Link to={`/lesson/${this.props.lesson.id}`}>*/}
-                    <Link to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}>
+                    <Link onClick={this.highlight}
+                          to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}>
                         {this.props.lesson.title}
                     </Link>
                     <i style={{'marginLeft': '10px'}} onClick={() => {

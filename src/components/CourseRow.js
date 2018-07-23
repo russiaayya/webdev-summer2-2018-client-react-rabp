@@ -26,7 +26,7 @@ class CourseRow extends React.Component {
         return (
             <tr>
                 <td>
-                    <i style={{'marginRight': '10px'}} className="fa fa-pencil"></i>
+                    <i style={{'marginRight': '10px'}} className="fa fa-book"></i>
                 <Link to={`/course/${this.props.course.id}`}>
                     {this.props.course.title}
                 </Link>
