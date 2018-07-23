@@ -70,15 +70,13 @@ class LessonTabs extends React.Component{
 
     renderListOfLessons(){
         var self = this
-        console.log('state info'+this.state);
+        console.log('Course id info'+self.props.courseId);
         let lessons = this.state.lessons.map(function (lesson) {
             return <LessonTabItem key={lesson.id}
-                                   courseId = {self.props.courseId}
+                                  courseId = {self.props.courseId}
                                   moduleId = {self.props.moduleId}
-                // title={module.title}
-                // id={module.id}
-                                   lesson = {lesson}
-                                   deleteLesson={self.deleteLesson}/>
+                                  lesson = {lesson}
+                                  deleteLesson={self.deleteLesson}/>
         })
 
         return lessons;

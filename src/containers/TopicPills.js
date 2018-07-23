@@ -70,8 +70,6 @@ class TopicPills extends React.Component{
                                   courseId = {self.props.courseId}
                                   moduleId = {self.props.moduleId}
                                   lessonId = {self.props.lessonId}
-                // title={module.title}
-                // id={module.id}
                                   topic = {topic}
                                   deleteTopic={self.deleteTopic}/>
         })
@@ -84,7 +82,7 @@ class TopicPills extends React.Component{
             <div>
                 <input className="form-control"
                        onChange={this.titleChanged}
-                       placeholder="title"/>
+                       placeholder="New Topic Title"/>
                 <button onClick={this.createTopic}
                         className=
                             "btn btn-primary btn-block">

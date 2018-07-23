@@ -37,7 +37,8 @@ class CourseEditor extends React.Component{
                         <div className="col-8">
                             {/*<Route path="/module/:moduleId"*/}
                             <Route path="/course/:courseId/module/:moduleId"
-                                   component={ModuleEditor}>
+                                   component={ModuleEditor}
+                                   courseId={this.state.courseId}>
                                 {/*<LessonTabs/>*/}
                             </Route>
                         </div>

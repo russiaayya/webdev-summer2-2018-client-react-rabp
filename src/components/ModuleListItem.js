@@ -16,9 +16,9 @@ class ModuleListItem extends React.Component{
 
     render(){
         return(
-            <li className="list-group-item">
-                <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
+            <li className="list-group-item list-group-item-action">
                 {/*<Link to={`/module/${this.props.module.id}`}>*/}
+                <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
                 {this.props.module.title}
                 </Link>
                 <span className="pull-right">

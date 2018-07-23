@@ -28,7 +28,7 @@ class LessonEditor extends React.Component{
         return(
             <Router>
                 <div>
-                    <h2>Editing lesson: {this.state.lessonId}</h2>
+                    <h3>Editing lesson: {this.state.lessonId}</h3>
                     <div>
                         <TopicPills lessonId={this.state.lessonId}/>
                     </div>

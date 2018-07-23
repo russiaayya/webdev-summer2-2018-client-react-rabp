@@ -9,6 +9,7 @@ class ModuleEditor extends React.Component{
         super(props);
         this.selectModule = this.selectModule.bind(this);
         this.state = {moduleId: ''};
+        console.log('do i hve the course? '+this.props.match.params.courseId)
     }
 
     componentDidMount() {
@@ -31,12 +32,13 @@ class ModuleEditor extends React.Component{
                 <div>
                     <h2>Editing module: {this.state.moduleId}</h2>
                     <div>
-                        <LessonTabs moduleId={this.state.moduleId}/>
+                        <LessonTabs moduleId={this.state.moduleId}
+                                    courseId={this.props.match.params.courseId}/>
+                        <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId"
+                               component={LessonEditor}>
+                        </Route>
                     </div>
-                    <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId"
-                           component={LessonEditor}>
-                        {/*<LessonTabs/>*/}
-                    </Route>
+                    {/*<Route path="lesson/:lessonId"*/}
 
                     {/*<div className="row">*/}
                         {/*<div className="col-4">*/}
