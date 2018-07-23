@@ -5,6 +5,16 @@ class LessonTabItem extends React.Component{
     constructor(props){
         super(props);
     }
+
+    deleteLesson() {
+        if (window.confirm("Are you sure you want to delete this lesson?")) {
+            this.props.deleteLesson(this.props.lesson.id);
+        }
+        else {
+            return;
+        }
+    }
+
     render(){
         return(
             <li className="nav-item">
@@ -13,8 +23,7 @@ class LessonTabItem extends React.Component{
                         {this.props.lesson.title}
                     </Link>
                     <i style={{'marginLeft': '10px'}} onClick={() => {
-                        this.props.deleteLesson(this.props.lesson.id)
-                        console.log('hello: '+this.props.moduleId)}
+                        this.deleteLesson()}
                     } className="fa fa-times"></i>
                 </div>
             </li>

@@ -49,9 +49,15 @@ class LessonTabs extends React.Component{
     }
 
     createLesson() {
-        console.log(this.state.lesson);
+        let lesson;
+        if(this.state.lesson.title===''){
+            lesson = {title: "New Lesson"}
+        }
+        else {
+            lesson = this.state.lesson;
+        }
         this.lessonService
-            .createLesson(this.props.moduleId, this.state.lesson)
+            .createLesson(this.props.moduleId, lesson)
             .then(() => {
                 this.findAllLessonsForModule(this.props.moduleId)
             })
@@ -83,7 +89,7 @@ class LessonTabs extends React.Component{
             <div>
                 <input className="form-control"
                        onChange={this.titleChanged}
-                       placeholder="title"/>
+                       placeholder="New Lesson Title"/>
                 <button onClick={this.createLesson}
                         className=
                             "btn btn-primary btn-block">
