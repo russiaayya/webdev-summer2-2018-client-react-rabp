@@ -14,6 +14,14 @@ class CourseRow extends React.Component {
         }
         return dateTime;
     }
+    deleteCourse(){
+        if(window.confirm("Are you sure you want to delete this course?")){
+            this.props.deleteCourse(this.props.course.id);
+        }
+        else {
+            return;
+        }
+    }
     render() {
         return (
             <tr>
@@ -32,7 +40,7 @@ class CourseRow extends React.Component {
                 <td>
                     <button className="btn btn-danger"
                             onClick={() =>
-                                this.props.deleteCourse(this.props.course.id)
+                                this.deleteCourse()
                             }>
                         Delete
                     </button>
