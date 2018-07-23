@@ -42,4 +42,11 @@ export default class LessonService {
             });
     }
 
+    findAllLessons(){
+        return fetch(LESSON_API_URL)
+            .then(function (response) {
+                return response.json();
+            });
+    }
+
 }
