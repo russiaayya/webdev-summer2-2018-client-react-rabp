@@ -5,6 +5,15 @@ class ModuleListItem extends React.Component{
     constructor(props){
         super(props);
     }
+    deleteModule() {
+        if (window.confirm("Are you sure you want to delete this module?")) {
+            this.props.deleteModule(this.props.module.id);
+        }
+        else {
+            return;
+        }
+    }
+
     render(){
         return(
             <li className="list-group-item">
@@ -14,8 +23,7 @@ class ModuleListItem extends React.Component{
                 </Link>
                 <span className="pull-right">
                 <i onClick={() => {
-                    this.props.deleteModule(this.props.module.id)
-                console.log('hello: '+this.props.courseId)}
+                    this.deleteModule()}
                 } style={{'marginRight': '5px'}} className="fa fa-trash"></i>
                 <i className="fa fa-pencil"></i>
                 </span>

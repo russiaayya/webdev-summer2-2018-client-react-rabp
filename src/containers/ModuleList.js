@@ -48,9 +48,15 @@ class ModuleList extends React.Component {
     }
 
     createModule() {
-        console.log(this.state.module);
+        let module;
+        if(this.state.module.title===''){
+            module = {title: "New Module"}
+        }
+        else{
+            module = this.state.module;
+        }
         this.moduleService
-            .createModule(this.props.courseId, this.state.module)
+            .createModule(this.props.courseId, module)
             .then(() => {
                 this.findAllModulesForCourse(this.props.courseId)
             })
@@ -82,7 +88,7 @@ class ModuleList extends React.Component {
                 <h3>Module list for course: {this.state.courseId}</h3>
                 <input className="form-control"
                        onChange={this.titleChanged}
-                       placeholder="title"/>
+                       placeholder="New Module Title"/>
                 <button onClick={this.createModule}
                     className=
                         "btn btn-primary btn-block">
