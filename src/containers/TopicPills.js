@@ -2,6 +2,7 @@ import React from 'react'
 import TopicService from '../services/TopicService'
 import LessonService from "../services/LessonService";
 import TopicPillItem from "../components/TopicPillItem"
+import ReactDOM from "react-dom";
 
 class TopicPills extends React.Component{
 
@@ -55,6 +56,7 @@ class TopicPills extends React.Component{
             .then(() => {
                 this.findAllTopicsForLesson(this.props.lessonId)
             })
+        ReactDOM.findDOMNode(this.refs.topicInput).value = "";
     }
 
     deleteTopic = (topicId) => {
@@ -81,6 +83,7 @@ class TopicPills extends React.Component{
         return(
             <div>
                 <input className="form-control"
+                       ref="topicInput"
                        onChange={this.titleChanged}
                        placeholder="New Topic Title"/>
                 <button onClick={this.createTopic}

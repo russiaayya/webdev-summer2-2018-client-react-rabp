@@ -64,7 +64,6 @@ class CourseList extends React.Component {
             .createCourse(course)
             .then(() => { this.findAllCourses(); });
         ReactDOM.findDOMNode(this.refs.courseInput).value = "";
-
     }
 
     deleteCourse = (courseId) => {

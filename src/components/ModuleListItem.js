@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 class ModuleListItem extends React.Component{
     constructor(props){
         super(props);
+        this.highlight = this.highlight.bind(this);
     }
     deleteModule() {
         if (window.confirm("Are you sure you want to delete this module?")) {
@@ -14,11 +15,21 @@ class ModuleListItem extends React.Component{
         }
     }
 
+    highlight(){
+        var mods = document.getElementsByClassName('module-list');
+        for(var i=0;i<mods.length;i++){
+            mods[i].style.backgroundColor="white";
+        }
+        var mod = document.getElementById(this.props.module.id);
+        mod.style.backgroundColor="#d7f0f7";
+    }
+
     render(){
         return(
-            <li className="list-group-item list-group-item-action">
+            <li id={this.props.module.id} className="list-group-item list-group-item-action module-list">
                 {/*<Link to={`/module/${this.props.module.id}`}>*/}
-                <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
+                <Link onClick={this.highlight}
+                      to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
                 {this.props.module.title}
                 </Link>
                 <span className="pull-right">

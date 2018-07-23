@@ -2,6 +2,7 @@ import React from 'react'
 import ModuleService from "../services/ModuleService";
 import LessonService from "../services/LessonService"
 import LessonTabItem from "../components/LessonTabItem"
+import ReactDOM from "react-dom";
 
 class LessonTabs extends React.Component{
 
@@ -61,6 +62,7 @@ class LessonTabs extends React.Component{
             .then(() => {
                 this.findAllLessonsForModule(this.props.moduleId)
             })
+        ReactDOM.findDOMNode(this.refs.lessonInput).value = "";
     }
 
     deleteLesson = (lessonId) => {
@@ -86,6 +88,7 @@ class LessonTabs extends React.Component{
         return(
             <div>
                 <input className="form-control"
+                       ref="lessonInput"
                        onChange={this.titleChanged}
                        placeholder="New Lesson Title"/>
                 <button onClick={this.createLesson}

@@ -1,6 +1,7 @@
 import React from "react";
 import ModuleListItem from '../components/ModuleListItem';
 import ModuleService from '../services/ModuleService';
+import ReactDOM from "react-dom";
 
 class ModuleList extends React.Component {
 
@@ -60,6 +61,7 @@ class ModuleList extends React.Component {
             .then(() => {
                 this.findAllModulesForCourse(this.props.courseId)
             })
+        ReactDOM.findDOMNode(this.refs.moduleInput).value = "";
     }
 
     deleteModule = (moduleId) => {
@@ -87,6 +89,7 @@ class ModuleList extends React.Component {
             <div>
                 <h3>Module list for course: {this.state.courseId}</h3>
                 <input className="form-control"
+                       ref="moduleInput"
                        onChange={this.titleChanged}
                        placeholder="New Module Title"/>
                 <button onClick={this.createModule}
