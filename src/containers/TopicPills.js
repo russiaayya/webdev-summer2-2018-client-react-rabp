@@ -82,6 +82,7 @@ class TopicPills extends React.Component{
     render(){
         return(
             <div>
+                <h3 id="topic-pills">Topics for lesson: {this.state.lessonId}</h3>
                 <input className="form-control"
                        ref="topicInput"
                        onChange={this.titleChanged}

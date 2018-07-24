@@ -43,7 +43,7 @@ export default class ModuleService {
     }
 
     findAllModules(){
-        return fetch(MODULE_API_URL)
+        return fetch(MODULE_API_URL_2)
             .then(function (response) {
                 return response.json();
             });

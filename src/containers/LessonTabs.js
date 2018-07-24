@@ -11,13 +11,19 @@ class LessonTabs extends React.Component{
         this.state = {
             moduleId: '',
             lesson: { title: ''},
-            lessons: []
+            lessons: [],
+            moduleTitle: ''
         };
         this.createLesson = this.createLesson.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
         this.setModuleId = this.setModuleId.bind(this);
         this.deleteLesson = this.deleteLesson.bind(this);
         this.lessonService = LessonService.instance;
+        this.moduleService = ModuleService.instance;
+    }
+
+    setModuleTitle(moduleTitle) {
+        this.setState({moduleTitle: moduleTitle});
     }
 
     setModuleId(moduleId) {
@@ -40,11 +46,14 @@ class LessonTabs extends React.Component{
 
     componentWillReceiveProps(newProps){
         this.setModuleId(newProps.moduleId);
-        this.findAllLessonsForModule(newProps.moduleId)
+        this.findAllLessonsForModule(newProps.moduleId);
+        this.moduleService.findModuleById(newProps.moduleId)
+            .then(module => {
+                this.setModuleTitle(module.title)
+            });
     }
 
     titleChanged(event) {
-        console.log(event.target.value);
         this.setState({lesson: {title: event.target.value}});
         this.createLesson = this.createLesson.bind(this);
     }
@@ -71,8 +80,7 @@ class LessonTabs extends React.Component{
     };
 
     renderListOfLessons(){
-        var self = this
-        console.log('Course id info'+self.props.courseId);
+        var self = this;
         let lessons = this.state.lessons.map(function (lesson) {
             return <LessonTabItem key={lesson.id}
                                   courseId = {self.props.courseId}
@@ -87,6 +95,7 @@ class LessonTabs extends React.Component{
     render() {
         return(
             <div>
+                <h3 id="lesson-tabs">Lessons for module: {this.state.moduleTitle}</h3>
                 <input className="form-control"
                        ref="lessonInput"
                        onChange={this.titleChanged}

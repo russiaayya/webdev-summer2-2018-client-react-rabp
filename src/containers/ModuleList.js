@@ -1,6 +1,7 @@
 import React from "react";
 import ModuleListItem from '../components/ModuleListItem';
 import ModuleService from '../services/ModuleService';
+import CourseService from '../services/CourseService';
 import ReactDOM from "react-dom";
 
 class ModuleList extends React.Component {
@@ -11,7 +12,8 @@ class ModuleList extends React.Component {
             courseId: '',
             module: { title: ''},
             modules: [],
-            mid: ''
+            mid: '',
+            courseTitle: ''
         };
         this.createModule = this.createModule.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
@@ -19,12 +21,17 @@ class ModuleList extends React.Component {
         this.deleteModule = this.deleteModule.bind(this);
         this.updateModule = this.updateModule.bind(this);
         this.selectModule = this.selectModule.bind(this);
-        // this.renderListOfModules = this.renderListOfModules.bind(this);
+        this.renderListOfModules = this.renderListOfModules.bind(this);
         this.moduleService = ModuleService.instance;
+        this.courseService = CourseService.instance;
     }
 
     setCourseId(courseId) {
         this.setState({courseId: courseId});
+    }
+
+    setCourseTitle(courseTitle) {
+        this.setState({courseTitle: courseTitle});
     }
 
     setModules(modules) {
@@ -43,7 +50,11 @@ class ModuleList extends React.Component {
 
     componentWillReceiveProps(newProps){
         this.setCourseId(newProps.courseId);
-        this.findAllModulesForCourse(newProps.courseId)
+        this.findAllModulesForCourse(newProps.courseId);
+        this.courseService.findCourseById(newProps.courseId)
+            .then(course => {
+                this.setCourseTitle(course.title)
+            });
     }
 
     titleChanged(event) {
@@ -76,19 +87,18 @@ class ModuleList extends React.Component {
     renderListOfModules(){
         var self = this
         let modules = null;
+        console.log(this.state)
         if(this.state){
-            let modules = this.state.modules.map(function (module) {
+            modules = this.state.modules.map(function (module) {
                 return <ModuleListItem key={module.id}
                                        courseId = {self.props.courseId}
-                    // title={module.title}
-                    // id={module.id}
                                        module = {module}
                                        deleteModule={self.deleteModule}
                                        updateModule={self.updateModule}
                                        selectModule={self.selectModule}/>
             })
-            return (modules);
         }
+        return (modules);
     }
 
     selectModule = (event) =>{
@@ -102,6 +112,7 @@ class ModuleList extends React.Component {
     }
 
     updateModule = () => {
+        let self = this;
         let module;
         if(this.state.module.title===''){
             module = {title: "New Module"}
@@ -110,8 +121,8 @@ class ModuleList extends React.Component {
             module = this.state.module;
         }
         this.moduleService.updateModule(this.state.mid,module)
-            .then(() => this.moduleService.findAllModules())
-            .then(modules => this.setState({modules: modules}));
+            .then(() => self.moduleService.findAllModulesForCourse(self.state.courseId))
+            .then(modules => self.setState({modules: modules}));
         this.state.module.title='';
         ReactDOM.findDOMNode(this.refs.moduleInput).value = "";
     };
@@ -119,7 +130,7 @@ class ModuleList extends React.Component {
     render(){
         return (
             <div>
-                <h3>Module list for course: {this.state.courseId}</h3>
+                <h2>Modules for course: {this.state.courseTitle}</h2>
                 <input className="form-control"
                        ref="moduleInput"
                        onChange={this.titleChanged}

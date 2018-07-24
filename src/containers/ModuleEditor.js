@@ -29,7 +29,7 @@ class ModuleEditor extends React.Component{
         return(
             <Router>
                 <div>
-                    <h2>Editing module: {this.state.moduleId}</h2>
+                    {/*<h3>Editing module: {this.state.moduleId}</h3>*/}
                     <div>
                         <LessonTabs moduleId={this.state.moduleId}
                                     courseId={this.props.match.params.courseId}/>

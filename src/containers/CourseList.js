@@ -78,9 +78,7 @@ class CourseList extends React.Component {
 
     selectCourse = (event) =>{
         var editBtn = event.currentTarget;
-        console.log("edit button is here!!  "+editBtn);
         var courseId = editBtn.parentNode.parentNode.id;
-        console.log("parent is here!!  "+courseId);
         this.courseService.findCourseById(courseId)
             .then((course)=>{
                 ReactDOM.findDOMNode(this.refs.courseInput).value = course.title;
@@ -107,6 +105,7 @@ class CourseList extends React.Component {
         return (
             <div>
                 <h2>Course List</h2>
+                <div className="table-responsive">
                 <table className="table">
                     <thead>
                     <tr>
@@ -130,6 +129,7 @@ class CourseList extends React.Component {
                     {this.renderCourseRows()}
                     </tbody>
                 </table>
+                </div>
             </div>
         )
     }
