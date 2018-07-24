@@ -2,6 +2,10 @@ const MODULE_API_URL =
     'http://localhost:8080/api/course/CID/module';
 const MODULE_API_URL_2 =
     'http://localhost:8080/api/module'
+// const MODULE_API_URL =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/course/CID/module';
+// const MODULE_API_URL_2 =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/module'
 
 let _singleton = Symbol();
 export default class ModuleService {

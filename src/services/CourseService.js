@@ -1,4 +1,6 @@
 let _singleton = Symbol();
+// const COURSE_API_URL =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/course';
 const COURSE_API_URL =
     'http://localhost:8080/api/course';
 class CourseService {

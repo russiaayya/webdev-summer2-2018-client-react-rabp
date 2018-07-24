@@ -6,6 +6,7 @@ import CourseEditor from './CourseEditor';
 import CourseList from "./CourseList";
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import '../Styles.css'
+import { Link } from 'react-router-dom'
 
 // import LessonTabs from './LessonTabs';
 // import TopicPills from './TopicPills';
@@ -15,6 +16,9 @@ class CourseManager extends React.Component{
         return (
             <Router>
                 <div className="container-fluid">
+                    <Link to={`/courses`}>
+                        Back to list of courses
+                    </Link>
                     <h1 id="course-manager">Course Manager</h1>
                     {/*<CourseList/>*/}
                     <Route path="/courses"
