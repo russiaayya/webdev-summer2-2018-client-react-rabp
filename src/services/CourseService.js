@@ -39,5 +39,32 @@ class CourseService {
             });
     }
 
+    findCourseById(courseId){
+        return fetch(COURSE_API_URL + '/' + courseId, {
+            method: 'get'
+        })
+            .then(function(response){
+                return response.json();
+            });
+    }
+
+    updateCourse(courseId, course) {
+        return fetch(COURSE_API_URL + '/' + courseId, {
+            method: 'put',
+            body: JSON.stringify(course),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(function (response) {
+                if(response.bodyUsed){
+                    return response.json();
+                } else {
+                    return null;
+                }
+
+            });
+    }
+
 }
 export default CourseService;

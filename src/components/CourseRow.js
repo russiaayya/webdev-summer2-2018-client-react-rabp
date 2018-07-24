@@ -24,7 +24,7 @@ class CourseRow extends React.Component {
     }
     render() {
         return (
-            <tr>
+            <tr id = {this.props.course.id}>
                 <td>
                     <i style={{'marginRight': '10px'}} className="fa fa-book"></i>
                 <Link to={`/course/${this.props.course.id}`}>
@@ -36,6 +36,14 @@ class CourseRow extends React.Component {
                 </td>
                 <td>
                     {this.displayDateTime()}
+                </td>
+                <td>
+                    <button className="btn btn-success"
+                            onClick={(event) =>
+                                this.props.selectCourse(event)
+                            }>
+                        Edit Title
+                    </button>
                 </td>
                 <td>
                     <button className="btn btn-danger"

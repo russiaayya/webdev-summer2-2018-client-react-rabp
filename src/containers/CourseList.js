@@ -10,9 +10,12 @@ class CourseList extends React.Component {
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
         this.deleteCourse = this.deleteCourse.bind(this);
+        this.updateCourse = this.updateCourse.bind(this);
+        this.selectCourse = this.selectCourse.bind(this);
         this.state = {
             course: {title: ''},
-            courses: []
+            courses: [],
+            cid: ''
         }
     }
 
@@ -38,7 +41,9 @@ class CourseList extends React.Component {
                 function (course) {
                     return <CourseRow key={course.id}
                                       course={course}
-                                      deleteCourse={self.deleteCourse}/>
+                                      deleteCourse={self.deleteCourse}
+                                      updateCourse={self.updateCourse}
+                                      selectCourse={self.selectCourse}/>
                 }
             )
         }
@@ -72,6 +77,32 @@ class CourseList extends React.Component {
             .then(courses => this.setState({courses: courses}))
     };
 
+    selectCourse = (event) =>{
+        var editBtn = event.currentTarget;
+        console.log("edit button is here!!  "+editBtn);
+        var courseId = editBtn.parentNode.parentNode.id;
+        console.log("parent is here!!  "+courseId);
+        this.courseService.findCourseById(courseId)
+            .then((course)=>{
+                ReactDOM.findDOMNode(this.refs.courseInput).value = course.title;
+            });
+        this.state.cid = courseId;
+    }
+
+    updateCourse = () => {
+        let course;
+        if(this.state.course.title===''){
+            course = {title: "New Course"}
+        }
+        else{
+            course = this.state.course;
+        }
+        this.courseService.updateCourse(this.state.cid,course)
+            .then(() => this.courseService.findAllCourses())
+            .then(courses => this.setState({courses: courses}));
+        ReactDOM.findDOMNode(this.refs.courseInput).value = "";
+    };
+
     render() {
         return (
             <div>
@@ -87,6 +118,8 @@ class CourseList extends React.Component {
                                    placeholder="New Course Title"/></th>
                         <th><button onClick={this.createCourse}
                                     className="btn btn-primary">Add New Course</button></th>
+                        <th><button onClick={this.updateCourse}
+                                    className="btn btn-primary">Update</button></th>
                     </tr>
                     <tr><th>Title</th>
                         <th>Owned by</th>
