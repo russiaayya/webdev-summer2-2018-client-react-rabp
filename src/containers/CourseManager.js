@@ -5,6 +5,7 @@ import LessonTabs from './LessonTabs';
 import CourseEditor from './CourseEditor';
 import CourseList from "./CourseList";
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import '../Styles.css'
 
 // import LessonTabs from './LessonTabs';
 // import TopicPills from './TopicPills';

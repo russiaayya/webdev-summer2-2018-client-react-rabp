@@ -10,12 +10,16 @@ class ModuleList extends React.Component {
         this.state = {
             courseId: '',
             module: { title: ''},
-            modules: []
+            modules: [],
+            mid: ''
         };
         this.createModule = this.createModule.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
         this.setCourseId = this.setCourseId.bind(this);
         this.deleteModule = this.deleteModule.bind(this);
+        this.updateModule = this.updateModule.bind(this);
+        this.selectModule = this.selectModule.bind(this);
+        // this.renderListOfModules = this.renderListOfModules.bind(this);
         this.moduleService = ModuleService.instance;
     }
 
@@ -71,18 +75,46 @@ class ModuleList extends React.Component {
 
     renderListOfModules(){
         var self = this
-        console.log(this.state);
-        let modules = this.state.modules.map(function (module) {
-            return <ModuleListItem key={module.id}
-                                   courseId = {self.props.courseId}
-                                   // title={module.title}
-                                   // id={module.id}
-                                   module = {module}
-                                   deleteModule={self.deleteModule}/>
-        })
-
-            return modules;
+        let modules = null;
+        if(this.state){
+            let modules = this.state.modules.map(function (module) {
+                return <ModuleListItem key={module.id}
+                                       courseId = {self.props.courseId}
+                    // title={module.title}
+                    // id={module.id}
+                                       module = {module}
+                                       deleteModule={self.deleteModule}
+                                       updateModule={self.updateModule}
+                                       selectModule={self.selectModule}/>
+            })
+            return (modules);
+        }
     }
+
+    selectModule = (event) =>{
+        var editBtn = event.currentTarget;
+        var moduleId = editBtn.parentNode.parentNode.id.substring(0, editBtn.parentNode.parentNode.id.indexOf('m'));
+        this.moduleService.findModuleById(moduleId)
+            .then((module)=>{
+                ReactDOM.findDOMNode(this.refs.moduleInput).value = module.title;
+            });
+        this.state.mid = moduleId;
+    }
+
+    updateModule = () => {
+        let module;
+        if(this.state.module.title===''){
+            module = {title: "New Module"}
+        }
+        else{
+            module = this.state.module;
+        }
+        this.moduleService.updateModule(this.state.mid,module)
+            .then(() => this.moduleService.findAllModules())
+            .then(modules => this.setState({modules: modules}));
+        this.state.module.title='';
+        ReactDOM.findDOMNode(this.refs.moduleInput).value = "";
+    };
 
     render(){
         return (
@@ -92,12 +124,27 @@ class ModuleList extends React.Component {
                        ref="moduleInput"
                        onChange={this.titleChanged}
                        placeholder="New Module Title"/>
+                <table className="table">
+                    <thead>
+                    <tr>
+                        <th>
                 <button onClick={this.createModule}
                     className=
                         "btn btn-primary btn-block">
                     <i className=
                            "fa fa-plus"></i>
+                </button></th>
+                        <th>
+                <button onClick={this.updateModule}
+                        className=
+                            "btn btn-primary btn-block">
+                    <i className=
+                           "fa fa-check"></i>
                 </button>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
                 <ul className="list-group">
                     {this.renderListOfModules()}
                 </ul>

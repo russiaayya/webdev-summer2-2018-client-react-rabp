@@ -35,7 +35,6 @@ class CourseList extends React.Component {
     renderCourseRows() {
         var self = this
         let courses = null;
-        console.log(this.state)
         if(this.state) {
             courses = this.state.courses.map(
                 function (course) {
@@ -100,6 +99,7 @@ class CourseList extends React.Component {
         this.courseService.updateCourse(this.state.cid,course)
             .then(() => this.courseService.findAllCourses())
             .then(courses => this.setState({courses: courses}));
+        this.state.course.title='';
         ReactDOM.findDOMNode(this.refs.courseInput).value = "";
     };
 

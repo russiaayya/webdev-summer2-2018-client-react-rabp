@@ -1,7 +1,7 @@
 const MODULE_API_URL =
     'http://localhost:8080/api/course/CID/module';
 const MODULE_API_URL_2 =
-    'http://localhost:8080//api/module'
+    'http://localhost:8080/api/module'
 
 let _singleton = Symbol();
 export default class ModuleService {
@@ -46,6 +46,33 @@ export default class ModuleService {
         return fetch(MODULE_API_URL)
             .then(function (response) {
                 return response.json();
+            });
+    }
+
+    findModuleById(moduleId){
+        return fetch(MODULE_API_URL_2 + '/' + moduleId, {
+            method: 'get'
+        })
+            .then(function(response){
+                return response.json();
+            });
+    }
+
+    updateModule(moduleId, module) {
+        return fetch(MODULE_API_URL_2 + '/' + moduleId, {
+            method: 'put',
+            body: JSON.stringify(module),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(function (response) {
+                if(response.bodyUsed){
+                    return response.json();
+                } else {
+                    return null;
+                }
+
             });
     }
 

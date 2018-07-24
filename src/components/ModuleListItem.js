@@ -35,8 +35,11 @@ class ModuleListItem extends React.Component{
                 <span className="pull-right">
                 <i onClick={() => {
                     this.deleteModule()}
-                } style={{'marginRight': '5px'}} className="fa fa-trash"></i>
-                <i className="fa fa-pencil"></i>
+                } className="fa fa-trash"></i>
+                <i onClick={(event) =>
+                    this.props.selectModule(event)
+                }
+                   className="fa fa-pencil"></i>
                 </span>
             </li>
         )

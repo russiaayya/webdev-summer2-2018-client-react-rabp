@@ -34,7 +34,7 @@ class LessonTabItem extends React.Component{
                           to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}>
                         {this.props.lesson.title}
                     </Link>
-                    <i style={{'marginLeft': '10px'}} onClick={() => {
+                    <i onClick={() => {
                         this.deleteLesson()}
                     } className="fa fa-times"></i>
                 </div>

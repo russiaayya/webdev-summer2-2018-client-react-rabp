@@ -31,7 +31,7 @@ class TopicPillItem extends React.Component{
                 className="nav-item topic-pills">
                 <div className="nav-link" onClick={this.highlight}>
                     {this.props.topic.title}
-                    <i style={{'marginLeft': '10px'}} onClick={() => {
+                    <i onClick={() => {
                         this.deleteTopic()
                         // console.log('hello: '+this.props.moduleId)
                         }

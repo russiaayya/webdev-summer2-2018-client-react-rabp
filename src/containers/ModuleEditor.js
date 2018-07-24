@@ -9,7 +9,6 @@ class ModuleEditor extends React.Component{
         super(props);
         this.selectModule = this.selectModule.bind(this);
         this.state = {moduleId: ''};
-        console.log('do i hve the course? '+this.props.match.params.courseId)
     }
 
     componentDidMount() {
