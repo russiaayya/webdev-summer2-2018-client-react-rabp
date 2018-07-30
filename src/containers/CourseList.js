@@ -1,5 +1,6 @@
 import React from 'react';
 import CourseRow from "../components/CourseRow";
+import CourseCard from "../components/CourseCard";
 import CourseService from "../services/CourseService";
 import ReactDOM from 'react-dom';
 
@@ -101,6 +102,25 @@ class CourseList extends React.Component {
         ReactDOM.findDOMNode(this.refs.courseInput).value = "";
     };
 
+    renderCourseCards() {
+        var self = this
+        let courses = null;
+        if(this.state) {
+            courses = this.state.courses.map(
+                function (course) {
+                    return <CourseCard key={course.id}
+                                      course={course}
+                                      deleteCourse={self.deleteCourse}
+                                      updateCourse={self.updateCourse}
+                                      selectCourse={self.selectCourse}/>
+                }
+            )
+        }
+        return (
+            courses
+        )
+    }
+
     render() {
         return (
             <div>
@@ -127,6 +147,7 @@ class CourseList extends React.Component {
                     </thead>
                     <tbody>
                     {this.renderCourseRows()}
+                    {/*{this.renderCourseCards()}*/}
                     </tbody>
                 </table>
                 </div>

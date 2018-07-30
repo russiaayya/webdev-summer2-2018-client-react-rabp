@@ -1,11 +1,11 @@
-// const TOPIC_API_URL =
-//     'http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic';
-// const TOPIC_API_URL_2 =
-//     'http://localhost:8080/api/topic'
 const TOPIC_API_URL =
-    'http://webdev-summer2-2018-rabp.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic';
+    'http://localhost:8080/api/course/CID/module/MID/lesson/LID/topic';
 const TOPIC_API_URL_2 =
-    'http://webdev-summer2-2018-rabp.herokuapp.com/api/topic'
+    'http://localhost:8080/api/topic'
+// const TOPIC_API_URL =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/course/CID/module/MID/lesson/LID/topic';
+// const TOPIC_API_URL_2 =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/topic'
 
 let _singleton = Symbol();
 export default class TopicService {

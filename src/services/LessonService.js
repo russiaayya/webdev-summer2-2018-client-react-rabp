@@ -1,11 +1,11 @@
-// const LESSON_API_URL =
-//     'http://localhost:8080/api/course/CID/module/MID/lesson';
-// const LESSON_API_URL_2 =
-//     'http://localhost:8080/api/lesson'
 const LESSON_API_URL =
-    'http://webdev-summer2-2018-rabp.herokuapp.com/api/course/CID/module/MID/lesson';
+    'http://localhost:8080/api/course/CID/module/MID/lesson';
 const LESSON_API_URL_2 =
-    'http://webdev-summer2-2018-rabp.herokuapp.com/api/lesson'
+    'http://localhost:8080/api/lesson'
+// const LESSON_API_URL =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/course/CID/module/MID/lesson';
+// const LESSON_API_URL_2 =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/lesson'
 
 let _singleton = Symbol();
 export default class LessonService {

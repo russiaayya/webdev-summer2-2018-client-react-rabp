@@ -2,6 +2,7 @@ import React from 'react'
 import ModuleList from './ModuleList';
 import ModuleEditor from './ModuleEditor';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import LessonEditor from "./LessonEditor";
 
 class CourseEditor extends React.Component{
 

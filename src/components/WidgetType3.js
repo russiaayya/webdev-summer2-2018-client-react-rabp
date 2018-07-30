@@ -1,4 +1,4 @@
 import React from 'react'
 
-export const WidgetType1 = () =>
-    <h3>Widget Type 1</h3>
+export const WidgetType3 = () =>
+    <h3>Widget Type 3</h3>

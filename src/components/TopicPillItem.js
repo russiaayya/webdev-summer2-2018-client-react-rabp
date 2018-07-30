@@ -29,8 +29,11 @@ class TopicPillItem extends React.Component{
         return(
             <li id={this.props.topic.id+"t"}
                 className="nav-item topic-pills">
-                <div className="nav-link" onClick={this.highlight}>
+                <div className="nav-link">
+                    <Link onClick={this.highlight}
+                          to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>
                     {this.props.topic.title}
+                    </Link>
                     <i onClick={() => {
                         this.deleteTopic()
                         // console.log('hello: '+this.props.moduleId)
