@@ -9,16 +9,18 @@ export const HeadingWidget = ({widget, updateWidget}) =>
         <div>
             <h3> Heading Widget</h3>
             <label htmlFor="text">Heading text</label>
-            <input onChange={() => {
-                widget.text = text.value;
-                updateWidget(widget)
-            }}
-                ref={node => text = node}
+            <input ref={node => text = node}
+                   onChange={() => {
+                       widget.text = text.value;
+                       console.log("heading: "+widget.text)
+                       updateWidget(widget)
+                   }}
                    className="form-control"
                    placeholder="Heading text" id="text"/>
             <label htmlFor="size">Heading size</label>
-            <select defaultValue="1" onChange={() => {
+            <select onChange={() => {
                 widget.size =parseInt(size.value);
+                console.log("size: "+ widget.size)
                 updateWidget(widget)
             }}
                 ref={node => size = node}
@@ -39,7 +41,6 @@ export const HeadingWidget = ({widget, updateWidget}) =>
             {widget.size === '1' && <h1>{widget.text}</h1>}
             {widget.size === '2' && <h2>{widget.text}</h2>}
             {widget.size === '3' && <h3>{widget.text}</h3>}
-            {widget.size === '4' && <h4>{widget.text}</h4>}
         </div>
     )
 }

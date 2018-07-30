@@ -51,8 +51,8 @@ class WidgetListComponent extends React.Component{
                             let widget = {
                                 title: this.widgetTitle.value,
                                 id: (new Date()).getTime(),
-                                // widgetType: this.widgetType.value
-                                widgetType: "LINK"
+                                widgetType: this.widgetType.value
+                                // widgetType: "LINK"
                             };
                             this.props.createWidget(widget)
                             this.widgetTitle.value = '';
@@ -65,15 +65,15 @@ class WidgetListComponent extends React.Component{
                             <button className="float-right btn btn-danger"
                                     onClick={() => this.props.deleteWidget(widget.id)}>
                                 Delete</button>
-                            <select id="widget-dropdown" defaultValue={widget.widgetType} ref={node => this.widgetType = node} className="float-right form-control">
-                                <option value="WT1">Widget Type 1</option>
-                                <option value="WT2">Widget Type 2</option>
-                                <option value="WT3">Widget Type 3</option>
-                                <option value="HEADING">Heading Widget</option>
-                                <option value="PARAGRAPH">Paragraph Widget</option>
-                                <option value="IMAGE">Image Widget</option>
-                                <option value="LINK">Link Widget</option>
-                            </select>
+                            {/*<select id="widget-dropdown" defaultValue={widget.widgetType} ref={node => this.widgetType = node} className="float-right form-control">*/}
+                                {/*<option value="WT1">Widget Type 1</option>*/}
+                                {/*<option value="WT2">Widget Type 2</option>*/}
+                                {/*<option value="WT3">Widget Type 3</option>*/}
+                                {/*<option value="HEADING">Heading Widget</option>*/}
+                                {/*<option value="PARAGRAPH">Paragraph Widget</option>*/}
+                                {/*<option value="IMAGE">Image Widget</option>*/}
+                                {/*<option value="LINK">Link Widget</option>*/}
+                            {/*</select>*/}
                             <button onClick={() => this.props.down(widget.id)}
                                     className="float-right btn btn-warning">
                                 Down
