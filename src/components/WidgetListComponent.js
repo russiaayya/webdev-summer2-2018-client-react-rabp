@@ -5,6 +5,7 @@ import {WidgetType3} from './WidgetType3'
 import {HeadingWidget} from "./HeadingWidget";
 import {ListWidget} from "./ListWidget";
 import {ParagraphWidget} from "./ParagraphWidget";
+import {ImageWidget} from "./ImageWidget";
 
 class WidgetListComponent extends React.Component{
     constructor(props){
@@ -42,13 +43,14 @@ class WidgetListComponent extends React.Component{
                             <option value="HEADING">Heading Widget</option>
                             <option value="PARAGRAPH">Paragraph Widget</option>
                             <option value="LIST">List Widget</option>
+                            <option value="IMAGE">Image Widget</option>
                         </select>
                         <button onClick={() => {
                             let widget = {
                                 title: this.widgetTitle.value,
                                 id: (new Date()).getTime(),
                                 // widgetType: this.widgetType.value
-                                widgetType: "PARAGRAPH"
+                                widgetType: "IMAGE"
                             };
                             this.props.createWidget(widget)
                             this.widgetTitle.value = '';
@@ -67,6 +69,7 @@ class WidgetListComponent extends React.Component{
                                 <option value="WT3">Widget Type 3</option>
                                 <option value="HEADING">Heading Widget</option>
                                 <option value="PARAGRAPH">Paragraph Widget</option>
+                                <option value="IMAGE">Image Widget</option>
                             </select>
                             <button onClick={() => this.props.down(widget.id)}
                                     className="float-right btn btn-warning">
@@ -80,6 +83,7 @@ class WidgetListComponent extends React.Component{
                                 {widget.widgetType === 'LIST' && <ListWidget widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'PARAGRAPH' && <ParagraphWidget widget={widget} updateWidget={this.props.updateWidget}/>}
+                                {widget.widgetType === 'IMAGE' && <ImageWidget widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'WT1' && <WidgetType1 widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'WT2' && <WidgetType2 widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'WT3' && <WidgetType3 widget={widget} updateWidget={this.props.updateWidget}/>}
