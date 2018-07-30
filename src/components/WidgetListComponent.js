@@ -4,6 +4,7 @@ import {WidgetType2} from './WidgetType2'
 import {WidgetType3} from './WidgetType3'
 import {HeadingWidget} from "./HeadingWidget";
 import {ListWidget} from "./ListWidget";
+import {ParagraphWidget} from "./ParagraphWidget";
 
 class WidgetListComponent extends React.Component{
     constructor(props){
@@ -16,6 +17,7 @@ class WidgetListComponent extends React.Component{
     // componentWillReceiveProps(newProps){
     //     this.props.widgets = newProps.widgets;
     // }
+
     render(){
         return(
             <div>
@@ -30,17 +32,23 @@ class WidgetListComponent extends React.Component{
                                placeholder="Widget title"
                                id="widget-title"/>
                         <label htmlFor="widget-type">Widget type</label>
-                        <select id="widget-type" defaultValue="HEADING" ref={node => this.widgetType = node} className="form-control">
+                        <select id="widget-type"
+                                ref={node => this.widgetType = node}
+                                className="form-control"
+                                defaultValue="HEADING">
                             <option value="WT1">Widget Type 1</option>
-                            <option value="WT2">Widget Type 2</option>
+                            {/*<option value="WT2">Widget Type 2</option>*/}
                             <option value="WT3">Widget Type 3</option>
                             <option value="HEADING">Heading Widget</option>
+                            <option value="PARAGRAPH">Paragraph Widget</option>
+                            <option value="LIST">List Widget</option>
                         </select>
                         <button onClick={() => {
                             let widget = {
                                 title: this.widgetTitle.value,
                                 id: (new Date()).getTime(),
-                                widgetType: this.widgetType.value
+                                // widgetType: this.widgetType.value
+                                widgetType: "PARAGRAPH"
                             };
                             this.props.createWidget(widget)
                             this.widgetTitle.value = '';
@@ -58,6 +66,7 @@ class WidgetListComponent extends React.Component{
                                 <option value="WT2">Widget Type 2</option>
                                 <option value="WT3">Widget Type 3</option>
                                 <option value="HEADING">Heading Widget</option>
+                                <option value="PARAGRAPH">Paragraph Widget</option>
                             </select>
                             <button onClick={() => this.props.down(widget.id)}
                                     className="float-right btn btn-warning">
@@ -70,6 +79,7 @@ class WidgetListComponent extends React.Component{
                             <div>
                                 {widget.widgetType === 'LIST' && <ListWidget widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget={this.props.updateWidget}/>}
+                                {widget.widgetType === 'PARAGRAPH' && <ParagraphWidget widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'WT1' && <WidgetType1 widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'WT2' && <WidgetType2 widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'WT3' && <WidgetType3 widget={widget} updateWidget={this.props.updateWidget}/>}
