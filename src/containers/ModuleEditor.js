@@ -34,7 +34,7 @@ class ModuleEditor extends React.Component{
                         <LessonTabs moduleId={this.state.moduleId}
                                     courseId={this.props.match.params.courseId}/>
                         <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId"
-                               component={LessonEditor}>
+                               component={LessonEditor} >
                         </Route>
                     </div>
                     {/*<Route path="lesson/:lessonId"*/}

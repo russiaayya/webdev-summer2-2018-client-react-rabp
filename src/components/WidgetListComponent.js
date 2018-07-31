@@ -14,11 +14,18 @@ class WidgetListComponent extends React.Component{
         let widgetTitle;
         let widgetType;
         let widgetName;
-        this.props.loadAllWidgets()
+        // this.props.loadAllWidgets();
+        // this.props.findAllWidgetsForTopic(this.props.topicId)
+        // console.log('topic id hrer: '+this.props.topicId)
     }
-    // componentWillReceiveProps(newProps){
-    //     this.props.widgets = newProps.widgets;
-    // }
+
+    componentDidMount(){}
+
+    componentWillReceiveProps(newProps){
+        if (newProps.topicId !== this.props.topicId) {
+            this.props.findAllWidgetsForTopic(newProps.topicId);
+        }
+    }
 
     render(){
         return(

@@ -1,7 +1,8 @@
 import React from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import TopicPills from "./TopicPills";
-import WidgetList from './WidgetList'
+import WidgetListContainer from './WidgetListContainer'
+import TopicEditor from "./TopicEditor";
 
 class LessonEditor extends React.Component{
 
@@ -34,10 +35,10 @@ class LessonEditor extends React.Component{
                         <TopicPills lessonId={this.state.lessonId}
                                     moduleId={this.props.match.params.moduleId}
                                     courseId={this.props.match.params.courseId}/>
-                        <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId"
-                               component={WidgetList}>
-                        </Route>
                     </div>
+                    <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId"
+                           component={TopicEditor}>
+                    </Route>
 
                     {/*<div className="row">*/}
                     {/*<div className="col-4">*/}

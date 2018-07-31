@@ -15,7 +15,12 @@ const WidgetReducer = (
     action) => {
     let fromIndex;
     let toIndex;
+    let newState;
     switch (action.type){
+        case 'FIND_ALL_WIDGETS_FOR_TOPIC':
+            newState = Object.assign({}, state)
+            newState.widgets = action.widgets
+            return newState
         case 'UP':
             fromIndex = state.widgets.findIndex((widget) => widget.id === action.widgetId)
             toIndex = fromIndex--;

@@ -7,7 +7,7 @@ import WidgetListComponent from "./components/WidgetListComponent"
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import WidgetReducer from './reducers/WidgetReducer'
-import WidgetListContainer from "./containers/WidgetList"
+import WidgetListContainer from "./containers/WidgetListContainer"
 
 // ReactDOM.render(
 //     <CourseManager/>,

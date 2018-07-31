@@ -3,6 +3,8 @@ import TopicService from '../services/TopicService'
 import LessonService from "../services/LessonService";
 import TopicPillItem from "../components/TopicPillItem"
 import ReactDOM from "react-dom";
+import TopicEditor from "./TopicEditor";
+import {Route} from 'react-router-dom'
 
 class TopicPills extends React.Component{
 

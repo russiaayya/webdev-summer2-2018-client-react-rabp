@@ -9,6 +9,15 @@ const stateToPropertyMapper = state =>(
 
 const dispatcherToPropertyMapper = dispatch => (
     {
+        findAllWidgetsForTopic: (topicId) => {
+            fetch('http://localhost:8080/api/topic/'+topicId+'/widget')
+                .then(response => (response.json()))
+                .then(widgets => dispatch({
+                    type: 'FIND_ALL_WIDGETS_FOR_TOPIC',
+                    widgets: widgets
+                }) )
+        },
+
         deleteWidget: (widgetId) => dispatch({
             type: 'DELETE_WIDGET',
             widgetId: widgetId
