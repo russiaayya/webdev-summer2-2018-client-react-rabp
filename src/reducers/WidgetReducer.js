@@ -68,6 +68,7 @@ const WidgetReducer = (
                         listType: 'unordered',
                         src:'',
                         href:'',
+                        listItems:'',
                         widgetOrder: state.widgets.length + 1
                     }
                 ]
