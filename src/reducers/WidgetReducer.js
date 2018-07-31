@@ -58,7 +58,18 @@ const WidgetReducer = (
             return{
                 widgets: [
                     ...state.widgets,
-                    action.widget
+                    // action.widget
+                    {
+                        id: state.widgets.length + 1,
+                        text: '',
+                        name: '',
+                        widgetType: 'HEADING',
+                        size: '1',
+                        listType: 'unordered',
+                        src:'',
+                        href:'',
+                        widgetOrder: state.widgets.length + 1
+                    }
                 ]
             }
         case 'UPDATE_WIDGET':

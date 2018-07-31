@@ -13,7 +13,7 @@ export const ListWidget = ({widget, updateWidget}) => {
                           widget.listItems = text.value;
                           updateWidget(widget)
                       }}
-                      value={widget.listItems}></textarea>
+                      value={widget.listItems || ''}></textarea>
             {/*<label>*/}
                 {/*<input ref={node => ordered = node}*/}
                        {/*onClick={() => {*/}

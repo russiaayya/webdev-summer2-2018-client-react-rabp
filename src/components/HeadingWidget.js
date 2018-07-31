@@ -5,10 +5,26 @@ export const HeadingWidget = ({widget, updateWidget}) =>
     let text;
     let size;
     let name;
+    let widgetType;
     return(
         <div>
-            <h3> Heading Widget</h3>
-            <label htmlFor="text">Heading text</label>
+            {/*<h3> Heading Widget</h3>*/}
+            <h3>{widget.name} ({widget.id}) - Heading Widget</h3>
+            {/*<select id="widget-type"*/}
+                {/*ref={node => widgetType = node}*/}
+                {/*className="pull-right"*/}
+                {/*value={widget.widgetType}*/}
+                    {/*onChange={()=>{*/}
+                        {/*widget.widgetType = widgetType.value;*/}
+                        {/*updateWidget(widget);*/}
+                    {/*}}>*/}
+                {/*<option value="HEADING">Heading Widget</option>*/}
+                {/*<option value="PARAGRAPH">Paragraph Widget</option>*/}
+                {/*<option value="LIST">List Widget</option>*/}
+                {/*<option value="IMAGE">Image Widget</option>*/}
+                {/*<option value="LINK">Link Widget</option>*/}
+            {/*</select>*/}
+            <label htmlFor="text">Heading Text</label>
             <input ref={node => text = node}
                    onChange={() => {
                        widget.text = text.value;
@@ -16,10 +32,11 @@ export const HeadingWidget = ({widget, updateWidget}) =>
                        updateWidget(widget)
                    }}
                    className="form-control"
-                   placeholder="Heading text" id="text"/>
+                   placeholder="Heading text"
+                   id="text"/>
             <label htmlFor="size">Heading size</label>
             <select onChange={() => {
-                widget.size =parseInt(size.value);
+                widget.size = size.value;
                 console.log("size: "+ widget.size)
                 updateWidget(widget)
             }}
