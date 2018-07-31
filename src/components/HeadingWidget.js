@@ -9,7 +9,8 @@ export const HeadingWidget = ({widget, updateWidget}) =>
     return(
         <div>
             {/*<h3> Heading Widget</h3>*/}
-            <h3>{widget.name} ({widget.id}) - Heading Widget</h3>
+            <h3>Heading widget</h3>
+            <h4>{widget.name}</h4>
             {/*<select id="widget-type"*/}
                 {/*ref={node => widgetType = node}*/}
                 {/*className="pull-right"*/}
@@ -24,7 +25,7 @@ export const HeadingWidget = ({widget, updateWidget}) =>
                 {/*<option value="IMAGE">Image Widget</option>*/}
                 {/*<option value="LINK">Link Widget</option>*/}
             {/*</select>*/}
-            <label htmlFor="text">Heading Text</label>
+            <label htmlFor="text">Heading text</label>
             <input ref={node => text = node}
                    onChange={() => {
                        widget.text = text.value;
