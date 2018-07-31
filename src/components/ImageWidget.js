@@ -6,6 +6,7 @@ export const ImageWidget = ({widget, updateWidget}) => {
     return(
         <div>
             <h3>Image Widget</h3>
+            <h4>{widget.name}</h4>
             <label htmlFor="image-url">Image URL</label>
             <input ref={node => src = node}
                       className="form-control"
@@ -22,11 +23,10 @@ export const ImageWidget = ({widget, updateWidget}) => {
             }}
                    ref={node => name = node}
                    className="form-control"
-                   placeholder="Widget name" id="image-name"/>
+                   placeholder="Widget name"
+                   id="image-name"/>
             <h4>Preview</h4>
-            <img width="560"
-                 height="315"
-                 src={widget.src}/>
+            <img src={widget.src} className="img-fluid"/>
         </div>
     )
 }

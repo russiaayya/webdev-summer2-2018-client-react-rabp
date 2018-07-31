@@ -9,13 +9,16 @@ export const ListWidget = ({widget, updateWidget}) => {
         <div>
             <h3>List Widget</h3>
             <h4>{widget.name}</h4>
+            <label htmlFor="list-text">List items</label>
             <textarea ref={node => text = node}
                       className="form-control"
+                      placeholder="Enter one list item per line"
                       onChange={() =>{
                           widget.listItems = text.value;
                           updateWidget(widget)
                       }}
-                      value={widget.listItems || ''}>
+                      value={widget.listItems || ''}
+                      id="list-text">
             </textarea>
             {/*<label>*/}
                 {/*<input ref={node => ordered = node}*/}
