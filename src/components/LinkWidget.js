@@ -7,6 +7,7 @@ export const LinkWidget = ({widget, updateWidget}) => {
     return(
         <div>
             <h3>Link Widget</h3>
+            <h4>{widget.name}</h4>
             <label htmlFor="link-text">Link text</label>
             <input ref={node => text = node}
                    className="form-control"
@@ -32,7 +33,8 @@ export const LinkWidget = ({widget, updateWidget}) => {
             }}
                    ref={node => name = node}
                    className="form-control"
-                   placeholder="Widget name" id="link-name"/>
+                   placeholder="Widget name"
+                   id="link-name"/>
             <h4>Preview</h4>
             <a href={widget.href}>{widget.text}</a>
         </div>
