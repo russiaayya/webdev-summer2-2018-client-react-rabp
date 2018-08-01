@@ -5,6 +5,7 @@ export const HeadingWidget = ({widget, updateWidget}) =>
     let text;
     let size;
     let name;
+    let wSize;
     let widgetType;
     return(
         <div>
@@ -37,15 +38,17 @@ export const HeadingWidget = ({widget, updateWidget}) =>
                    value={widget.text}/>
             <label htmlFor="size">Heading size</label>
             <select onChange={() => {
-                widget.size = size.value;
+                widget.size = parseInt(size.value);
                 console.log("size: "+ widget.size)
                 updateWidget(widget)
             }}
                 ref={node => size = node}
-                    className="form-control" id="size">
-                <option value="1">Heading 1</option>
-                <option value="2">Heading 2</option>
-                <option value="3">Heading 3</option>
+                    className="form-control"
+                    value={widget.size}
+                    id="size">
+                <option value='1'>Heading 1</option>
+                <option value='2'>Heading 2</option>
+                <option value='3'>Heading 3</option>
             </select>
             <label htmlFor="name">Widget name</label>
             <input onChange={() => {

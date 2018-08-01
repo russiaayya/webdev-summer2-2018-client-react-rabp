@@ -65,7 +65,7 @@ const WidgetReducer = (
                         text: '',
                         name: '',
                         widgetType: 'HEADING',
-                        size: '1',
+                        size: 1,
                         listType: 'unordered',
                         src:'',
                         href:'',
