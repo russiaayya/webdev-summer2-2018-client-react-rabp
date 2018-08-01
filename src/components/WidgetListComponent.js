@@ -4,6 +4,7 @@ import {ListWidget} from "./ListWidget";
 import {ParagraphWidget} from "./ParagraphWidget";
 import {ImageWidget} from "./ImageWidget";
 import {LinkWidget} from "./LinkWidget";
+import ToggleButton from 'react-toggle-button'
 
 class WidgetListComponent extends React.Component{
     constructor(props){
@@ -27,6 +28,11 @@ class WidgetListComponent extends React.Component{
     render(){
         return(
             <div>
+                <div className="pull-right">
+                    Preview
+                    <ToggleButton onToggle={this.props.switchPreview}
+                                  value={this.props.preview}/>
+                </div>
                 <button onClick={() => this.props.saveWidgets(this.props.topicId)}
                         className="btn btn-success float-right">Save</button>
                 <h1>Widget List ({this.props.widgets.length})</h1>
@@ -40,13 +46,15 @@ class WidgetListComponent extends React.Component{
                         // };
                         this.props.createWidget()
                         // this.widgetTitle.value = '';
-                    }} className="btn btn-success">Add Widget</button>
+                    }} className="btn btn-success"
+                            hidden={this.props.preview}>Add Widget</button>
                     {this.props.widgets.sort((a,b) => a.widgetOrder - b.widgetOrder).map((widget, index)=>{
                         widget.widgetOrder = index;
                         return(
                         <li className="list-group-item"
                             key={index}>
                             {/*<h3>{widget.name} ({widget.id}) - {widget.widgetType} Widget</h3>*/}
+                            <div hidden={this.props.preview}>
                             <button className="float-right btn btn-danger"
                                     onClick={() => this.props.deleteWidget(widget.id)}>
                                 Delete</button>
@@ -74,12 +82,13 @@ class WidgetListComponent extends React.Component{
                                     className="float-right btn btn-warning">
                                 Up
                             </button>
+                            </div>
                             <div>
-                                {widget.widgetType === 'LIST' && <ListWidget widget={widget} updateWidget={this.props.updateWidget}/>}
-                                {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget={this.props.updateWidget}/>}
-                                {widget.widgetType === 'PARAGRAPH' && <ParagraphWidget widget={widget} updateWidget={this.props.updateWidget}/>}
-                                {widget.widgetType === 'IMAGE' && <ImageWidget widget={widget} updateWidget={this.props.updateWidget}/>}
-                                {widget.widgetType === 'LINK' && <LinkWidget widget={widget} updateWidget={this.props.updateWidget}/>}
+                                {widget.widgetType === 'LIST' && <ListWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
+                                {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
+                                {widget.widgetType === 'PARAGRAPH' && <ParagraphWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
+                                {widget.widgetType === 'IMAGE' && <ImageWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
+                                {widget.widgetType === 'LINK' && <LinkWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
                             </div>
                         </li>)}
                     )}

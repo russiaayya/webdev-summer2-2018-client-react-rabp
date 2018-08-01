@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const HeadingWidget = ({widget, updateWidget}) =>
+export const HeadingWidget = ({widget, updateWidget, preview}) =>
 {
     let text;
     let size;
@@ -9,7 +9,7 @@ export const HeadingWidget = ({widget, updateWidget}) =>
     let widgetType;
     return(
         <div>
-            <h3>Heading widget</h3>
+            <h3 hidden={preview}>Heading widget</h3>
             <h4>{widget.name}</h4>
             {/*<select id="widget-type"*/}
                 {/*ref={node => widgetType = node}*/}
@@ -25,6 +25,7 @@ export const HeadingWidget = ({widget, updateWidget}) =>
                 {/*<option value="IMAGE">Image Widget</option>*/}
                 {/*<option value="LINK">Link Widget</option>*/}
             {/*</select>*/}
+            <div hidden={preview}>
             <label htmlFor="text">Heading text</label>
             <input ref={node => text = node}
                    onChange={() => {
@@ -61,6 +62,7 @@ export const HeadingWidget = ({widget, updateWidget}) =>
                    value={widget.name}
                    id="name"/>
             <h4>Preview</h4>
+            </div>
             {widget.size === 1 && <h1>{widget.text}</h1>}
             {widget.size === 2 && <h2>{widget.text}</h2>}
             {widget.size === 3 && <h3>{widget.text}</h3>}

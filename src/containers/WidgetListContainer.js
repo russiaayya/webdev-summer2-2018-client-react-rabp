@@ -3,7 +3,8 @@ import WidgetListComponent from '../components/WidgetListComponent'
 
 const stateToPropertyMapper = state =>(
     {
-        widgets: state.widgets
+        widgets: state.widgets,
+        preview: state.preview
     }
 )
 
@@ -53,7 +54,10 @@ const dispatcherToPropertyMapper = dispatch => (
                 type: 'DOWN',
                 widget: widget
             })
-        }
+        },
+        switchPreview: () => dispatch({
+            type: 'PREVIEW'
+        })
     }
 )
 

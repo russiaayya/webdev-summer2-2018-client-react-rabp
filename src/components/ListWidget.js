@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ListWidget = ({widget, updateWidget}) => {
+export const ListWidget = ({widget, updateWidget, preview}) => {
     let text
     // let ordered
     let listType
@@ -8,8 +8,9 @@ export const ListWidget = ({widget, updateWidget}) => {
 
     return(
         <div>
-            <h3>List Widget</h3>
+            <h3 hidden={preview}>List Widget</h3>
             <h4>{widget.name}</h4>
+            <div hidden={preview}>
             <label htmlFor="list-text">List items</label>
             <textarea ref={node => text = node}
                       className="form-control"
@@ -54,6 +55,7 @@ export const ListWidget = ({widget, updateWidget}) => {
                    value={widget.name}
                    id="list-name"/>
             <h4>Preview</h4>
+            </div>
             {widget.listType === "unordered" && widget.listItems !== '' &&
             <ul>
                 {widget.listItems.split('\n').map((item, index) => (

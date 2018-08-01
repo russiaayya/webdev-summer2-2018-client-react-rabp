@@ -1,12 +1,13 @@
 import React from 'react'
 
-export const ImageWidget = ({widget, updateWidget}) => {
+export const ImageWidget = ({widget, updateWidget, preview}) => {
     let src
     let name
     return(
         <div>
-            <h3>Image Widget</h3>
+            <h3 hidden={preview}>Image Widget</h3>
             <h4>{widget.name}</h4>
+            <div hidden={preview}>
             <label htmlFor="image-url">Image URL</label>
             <input ref={node => src = node}
                    className="form-control"
@@ -28,6 +29,7 @@ export const ImageWidget = ({widget, updateWidget}) => {
                    value={widget.name}
                    id="image-name"/>
             <h4>Preview</h4>
+            </div>
             <img src={widget.src} className="img-fluid"/>
         </div>
     )

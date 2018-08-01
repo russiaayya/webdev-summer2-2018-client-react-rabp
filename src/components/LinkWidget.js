@@ -1,13 +1,14 @@
 import React from 'react'
 
-export const LinkWidget = ({widget, updateWidget}) => {
+export const LinkWidget = ({widget, updateWidget, preview}) => {
     let text
     let href
     let name
     return(
         <div>
-            <h3>Link Widget</h3>
+            <h3 hidden={preview}>Link Widget</h3>
             <h4>{widget.name}</h4>
+            <div hidden={preview}>
             <label htmlFor="link-text">Link text</label>
             <input ref={node => text = node}
                    className="form-control"
@@ -39,6 +40,7 @@ export const LinkWidget = ({widget, updateWidget}) => {
                    value={widget.name}
                    id="link-name"/>
             <h4>Preview</h4>
+            </div>
             <a href={widget.href}>{widget.text}</a>
         </div>
     )

@@ -1,12 +1,13 @@
 import React from 'react'
 
-export const ParagraphWidget = ({widget, updateWidget}) => {
+export const ParagraphWidget = ({widget, updateWidget, preview}) => {
     let text;
     let name;
     return(
         <div>
-            <h3>Paragraph widget</h3>
+            <h3 hidden={preview}>Paragraph widget</h3>
             <h4>{widget.name}</h4>
+            <div hidden={preview}>
             <label htmlFor="paragraph-text">Paragraph text</label>
             <textarea ref={node => text = node}
                       className="form-control"
@@ -28,6 +29,7 @@ export const ParagraphWidget = ({widget, updateWidget}) => {
                    value={widget.name}
                    id="paragraph-name"/>
             <h4>Preview</h4>
+            </div>
             {widget.text}
         </div>
     )
