@@ -56,7 +56,7 @@ const WidgetReducer = (
             };
         case 'SAVE_WIDGETS':
             console.log("topic id mila???: "+action.topicId)
-            fetch('http://localhost:8080/api/topic/'+1+'/widgets', {
+            fetch('http://localhost:8080/api/topic/'+action.topicId+'/widgets', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'
