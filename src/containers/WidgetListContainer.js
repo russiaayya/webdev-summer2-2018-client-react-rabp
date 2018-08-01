@@ -42,16 +42,16 @@ const dispatcherToPropertyMapper = dispatch => (
                     widgets: widgets
                 }))
         },
-        up: (widgetId) => {
+        up: (widget) => {
             dispatch({
                 type: 'UP',
-                widgetId: widgetId
+                widget: widget
             })
         },
-        down: (widgetId) => {
+        down: (widget) => {
             dispatch({
                 type: 'DOWN',
-                widgetId: widgetId
+                widget: widget
             })
         }
     }

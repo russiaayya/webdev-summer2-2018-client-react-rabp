@@ -41,7 +41,9 @@ class WidgetListComponent extends React.Component{
                         this.props.createWidget()
                         // this.widgetTitle.value = '';
                     }} className="btn btn-success">Add Widget</button>
-                    {this.props.widgets.map((widget, index)=>
+                    {this.props.widgets.sort((a,b) => a.widgetOrder - b.widgetOrder).map((widget, index)=>{
+                        widget.widgetOrder = index;
+                        return(
                         <li className="list-group-item"
                             key={index}>
                             {/*<h3>{widget.name} ({widget.id}) - {widget.widgetType} Widget</h3>*/}
@@ -62,11 +64,13 @@ class WidgetListComponent extends React.Component{
                                 <option value="IMAGE">Image Widget</option>
                                 <option value="LINK">Link Widget</option>
                             </select>
-                            <button onClick={() => this.props.down(widget.id)}
+                            <button onClick={() => this.props.down(widget)}
+                                    hidden={widget.widgetOrder===this.props.widgets.length-1}
                                     className="float-right btn btn-warning">
                                 Down
                             </button>
-                            <button onClick={() => this.props.up(widget.id)}
+                            <button onClick={() => this.props.up(widget)}
+                                    hidden={widget.widgetOrder===0}
                                     className="float-right btn btn-warning">
                                 Up
                             </button>
@@ -77,7 +81,7 @@ class WidgetListComponent extends React.Component{
                                 {widget.widgetType === 'IMAGE' && <ImageWidget widget={widget} updateWidget={this.props.updateWidget}/>}
                                 {widget.widgetType === 'LINK' && <LinkWidget widget={widget} updateWidget={this.props.updateWidget}/>}
                             </div>
-                        </li>
+                        </li>)}
                     )}
                 </ul>
             </div>)
