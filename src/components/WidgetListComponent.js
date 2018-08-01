@@ -26,6 +26,8 @@ class WidgetListComponent extends React.Component{
     }
 
     render(){
+        // let widgetType;
+        // let self = this
         return(
             <div>
                 <div className="pull-right">
@@ -50,6 +52,7 @@ class WidgetListComponent extends React.Component{
                             hidden={this.props.preview}>Add Widget</button>
                     {this.props.widgets.sort((a,b) => a.widgetOrder - b.widgetOrder).map((widget, index)=>{
                         widget.widgetOrder = index;
+                        let widgetType;
                         return(
                         <li className="list-group-item"
                             key={index}>
@@ -60,9 +63,9 @@ class WidgetListComponent extends React.Component{
                                 Delete</button>
                             <select id="widget-dropdown"
                                     value={widget.widgetType}
-                                    ref={node => this.widgetType = node}
+                                    ref={node => widgetType = node}
                                     onChange={()=>{
-                                    widget.widgetType = this.widgetType.value;
+                                        widget.widgetType = widgetType.value;
                                     this.props.updateWidget(widget);
                                     }}
                                     className="float-right form-control">
