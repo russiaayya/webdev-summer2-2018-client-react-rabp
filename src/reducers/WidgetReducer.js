@@ -40,7 +40,8 @@ const WidgetReducer = (
                 widgets: action.widgets
             };
         case 'SAVE_WIDGETS':
-            fetch('http://localhost:8080/api/widget', {
+            console.log("topic id mila???: "+action.topicId)
+            fetch('http://localhost:8080/api/topic/'+1+'/widgets', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'

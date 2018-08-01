@@ -9,10 +9,11 @@ export const ImageWidget = ({widget, updateWidget}) => {
             <h4>{widget.name}</h4>
             <label htmlFor="image-url">Image URL</label>
             <input ref={node => src = node}
-                      className="form-control"
-                      placeholder="Image URL"
-                      id="image-url"
-                      onChange={() =>{
+                   className="form-control"
+                   placeholder="Image URL"
+                   id="image-url"
+                   value={widget.src}
+                   onChange={() =>{
                           widget.src = src.value;
                           updateWidget(widget)
                       }}></input>
@@ -24,6 +25,7 @@ export const ImageWidget = ({widget, updateWidget}) => {
                    ref={node => name = node}
                    className="form-control"
                    placeholder="Widget name"
+                   value={widget.name}
                    id="image-name"/>
             <h4>Preview</h4>
             <img src={widget.src} className="img-fluid"/>

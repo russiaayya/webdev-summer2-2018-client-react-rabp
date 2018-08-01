@@ -13,6 +13,7 @@ export const LinkWidget = ({widget, updateWidget}) => {
                    className="form-control"
                    placeholder="Link text"
                    id="link-text"
+                   value={widget.text}
                    onChange={() =>{
                        widget.text = text.value;
                        updateWidget(widget)
@@ -21,6 +22,7 @@ export const LinkWidget = ({widget, updateWidget}) => {
             <input ref={node => href = node}
                    className="form-control"
                    placeholder="Link URL"
+                   value={widget.href}
                    id="link-url"
                    onChange={() =>{
                        widget.href = href.value;
@@ -34,6 +36,7 @@ export const LinkWidget = ({widget, updateWidget}) => {
                    ref={node => name = node}
                    className="form-control"
                    placeholder="Widget name"
+                   value={widget.name}
                    id="link-name"/>
             <h4>Preview</h4>
             <a href={widget.href}>{widget.text}</a>

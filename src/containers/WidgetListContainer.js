@@ -30,8 +30,9 @@ const dispatcherToPropertyMapper = dispatch => (
             type: 'UPDATE_WIDGET',
             widget: widget
         }),
-        saveWidgets: () => dispatch({
-            type: 'SAVE_WIDGETS'
+        saveWidgets: (topicId) => dispatch({
+            type: 'SAVE_WIDGETS',
+            topicId: topicId
         }),
         loadAllWidgets: () => {
             fetch('http://localhost:8080/api/widget')

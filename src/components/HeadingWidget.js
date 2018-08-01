@@ -8,7 +8,6 @@ export const HeadingWidget = ({widget, updateWidget}) =>
     let widgetType;
     return(
         <div>
-            {/*<h3> Heading Widget</h3>*/}
             <h3>Heading widget</h3>
             <h4>{widget.name}</h4>
             {/*<select id="widget-type"*/}
@@ -34,7 +33,8 @@ export const HeadingWidget = ({widget, updateWidget}) =>
                    }}
                    className="form-control"
                    placeholder="Heading text"
-                   id="text"/>
+                   id="text"
+                   value={widget.text}/>
             <label htmlFor="size">Heading size</label>
             <select onChange={() => {
                 widget.size = size.value;
@@ -54,11 +54,13 @@ export const HeadingWidget = ({widget, updateWidget}) =>
             }}
                    ref={node => name = node}
                    className="form-control"
-                   placeholder="Widget name" id="name"/>
+                   placeholder="Widget name"
+                   value={widget.name}
+                   id="name"/>
             <h4>Preview</h4>
-            {widget.size === '1' && <h1>{widget.text}</h1>}
-            {widget.size === '2' && <h2>{widget.text}</h2>}
-            {widget.size === '3' && <h3>{widget.text}</h3>}
+            {widget.size === 1 && <h1>{widget.text}</h1>}
+            {widget.size === 2 && <h2>{widget.text}</h2>}
+            {widget.size === 3 && <h3>{widget.text}</h3>}
         </div>
     )
 }

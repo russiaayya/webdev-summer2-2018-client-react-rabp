@@ -4,6 +4,7 @@ export const ListWidget = ({widget, updateWidget}) => {
     let text
     // let ordered
     let listType
+    let name
 
     return(
         <div>
@@ -29,10 +30,11 @@ export const ListWidget = ({widget, updateWidget}) => {
                        {/*checked={widget.ordered}*/}
                        {/*type="checkbox"/>Ordered*/}
             {/*</label>*/}
-            <label htmlFor="listType">Order</label>
+            <label htmlFor="listType">List type</label>
             <select ref={node => listType = node}
                     className="form-control"
                     id="listType"
+                    value={widget.listType}
                     onChange={() => {
                 // widget.ordered = ordered.checked
                 widget.listType = listType.value
@@ -41,6 +43,16 @@ export const ListWidget = ({widget, updateWidget}) => {
                 <option value="unordered">Unordered</option>
                 <option value="ordered">Ordered</option>
             </select>
+            <label htmlFor="list-name">Widget name</label>
+            <input onChange={() => {
+                widget.name = name.value;
+                updateWidget(widget)
+            }}
+                   ref={node => name = node}
+                   className="form-control"
+                   placeholder="Widget name"
+                   value={widget.name}
+                   id="list-name"/>
             <h4>Preview</h4>
             {widget.listType === "unordered" && widget.listItems !== '' &&
             <ul>

@@ -24,7 +24,9 @@ export const ParagraphWidget = ({widget, updateWidget}) => {
             }}
                    ref={node => name = node}
                    className="form-control"
-                   placeholder="Widget name" id="paragraph-name"/>
+                   placeholder="Widget name"
+                   value={widget.name}
+                   id="paragraph-name"/>
             <h4>Preview</h4>
             {widget.text}
         </div>

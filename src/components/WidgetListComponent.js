@@ -1,7 +1,4 @@
 import React from 'react'
-import {WidgetType1} from './WidgetType1'
-import {WidgetType2} from './WidgetType2'
-import {WidgetType3} from './WidgetType3'
 import {HeadingWidget} from "./HeadingWidget";
 import {ListWidget} from "./ListWidget";
 import {ParagraphWidget} from "./ParagraphWidget";
@@ -30,41 +27,10 @@ class WidgetListComponent extends React.Component{
     render(){
         return(
             <div>
-                <button onClick={this.props.saveWidgets}
+                <button onClick={() => this.props.saveWidgets(this.props.topicId)}
                         className="btn btn-success float-right">Save</button>
                 <h1>Widget List ({this.props.widgets.length})</h1>
                 <ul className="list-group">
-                    {/*<li className="list-group-item">*/}
-                        {/*<label htmlFor="widget-title">Widget title</label>*/}
-                        {/*<input ref={node => this.widgetTitle = node}*/}
-                               {/*className="form-control"*/}
-                               {/*placeholder="Widget title"*/}
-                               {/*id="widget-title"/>*/}
-                        {/*<label htmlFor="widget-type">Widget type</label>*/}
-                        {/*<select id="widget-type"*/}
-                                {/*ref={node => this.widgetType = node}*/}
-                                {/*className="form-control"*/}
-                                {/*defaultValue="HEADING">*/}
-                            {/*<option value="WT1">Widget Type 1</option>*/}
-                            {/*/!*<option value="WT2">Widget Type 2</option>*!/*/}
-                            {/*<option value="WT3">Widget Type 3</option>*/}
-                            {/*<option value="HEADING">Heading Widget</option>*/}
-                            {/*<option value="PARAGRAPH">Paragraph Widget</option>*/}
-                            {/*<option value="LIST">List Widget</option>*/}
-                            {/*<option value="IMAGE">Image Widget</option>*/}
-                            {/*<option value="LINK">Link Widget</option>*/}
-                        {/*</select>*/}
-                        {/*<button onClick={() => {*/}
-                            {/*// let widget = {*/}
-                            {/*//     title: this.widgetTitle.value,*/}
-                            {/*//     id: (new Date()).getTime(),*/}
-                            {/*//     widgetType: this.widgetType.value*/}
-                            {/*//     // widgetType: "LINK"*/}
-                            {/*// };*/}
-                            {/*this.props.createWidget()*/}
-                            {/*this.widgetTitle.value = '';*/}
-                        {/*}} className="btn btn-success">Add Widget</button>*/}
-                    {/*</li>*/}
                     <button onClick={() => {
                         // let widget = {
                         //     title: this.widgetTitle.value,
