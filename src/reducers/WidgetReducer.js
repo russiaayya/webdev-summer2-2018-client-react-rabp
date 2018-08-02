@@ -4,6 +4,12 @@ let initialState = {
     preview: false
 };
 
+// const WIDGET_API_URL =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/topic/';
+
+const WIDGET_API_URL =
+    'http://localhost:8080/api/topic/';
+
 const WidgetReducer = (
     state = initialState,
     action) => {
@@ -42,7 +48,7 @@ const WidgetReducer = (
                 widgets: action.widgets
             };
         case 'SAVE_WIDGETS':
-            fetch('http://localhost:8080/api/topic/'+action.topicId+'/widgets', {
+            fetch(WIDGET_API_URL+action.topicId+'/widgets', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'

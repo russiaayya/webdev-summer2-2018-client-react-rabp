@@ -1,6 +1,18 @@
 import {connect} from 'react-redux'
 import WidgetListComponent from '../components/WidgetListComponent'
 
+// const WIDGET_API_URL =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/topic/';
+//
+// const WIDGET_API_URL_2 =
+//     'http://webdev-summer2-2018-rabp.herokuapp.com/api/widget'
+
+const WIDGET_API_URL_2 =
+    'http://localhost:8080/api/widget'
+
+const WIDGET_API_URL =
+    'http://localhost:8080/api/topic/';
+
 const stateToPropertyMapper = state =>(
     {
         widgets: state.widgets,
@@ -11,7 +23,7 @@ const stateToPropertyMapper = state =>(
 const dispatcherToPropertyMapper = dispatch => (
     {
         findAllWidgetsForTopic: (topicId) => {
-            fetch('http://localhost:8080/api/topic/'+topicId+'/widget')
+            fetch(WIDGET_API_URL+topicId+'/widget')
                 .then(response => (response.json()))
                 .then(widgets => dispatch({
                     type: 'FIND_ALL_WIDGETS_FOR_TOPIC',
@@ -35,7 +47,7 @@ const dispatcherToPropertyMapper = dispatch => (
             topicId: topicId
         }),
         loadAllWidgets: () => {
-            fetch('http://localhost:8080/api/widget')
+            fetch(WIDGET_API_URL_2)
                 .then(respose => respose.json())
                 .then(widgets => dispatch({
                     type: 'FIND_ALL_WIDGETS',
