@@ -75,7 +75,7 @@ class WidgetListComponent extends React.Component{
                             </button>
                             </div>
                             <div>
-                                {widget.widgetType === 'LIST' && <ListWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
+                                {widget.widgetType === 'LIST' && <ListWidget widget={widget}updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
                                 {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
                                 {widget.widgetType === 'PARAGRAPH' && <ParagraphWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
                                 {widget.widgetType === 'IMAGE' && <ImageWidget widget={widget} updateWidget={this.props.updateWidget} preview={this.props.preview}/>}
