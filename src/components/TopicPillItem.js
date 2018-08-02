@@ -38,7 +38,7 @@ class TopicPillItem extends React.Component{
                         this.deleteTopic()
                         // console.log('hello: '+this.props.moduleId)
                         }
-                    } className="fa fa-times"></i>
+                    } className="fa fa-times webdev-close"></i>
                 </div>
             </li>
         )

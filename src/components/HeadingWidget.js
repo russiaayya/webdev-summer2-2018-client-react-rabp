@@ -5,26 +5,10 @@ export const HeadingWidget = ({widget, updateWidget, preview}) =>
     let text;
     let size;
     let name;
-    let wSize;
-    let widgetType;
     return(
         <div>
             <h3 hidden={preview}>Heading widget</h3>
             <h4>{widget.name}</h4>
-            {/*<select id="widget-type"*/}
-                {/*ref={node => widgetType = node}*/}
-                {/*className="pull-right"*/}
-                {/*value={widget.widgetType}*/}
-                    {/*onChange={()=>{*/}
-                        {/*widget.widgetType = widgetType.value;*/}
-                        {/*updateWidget(widget);*/}
-                    {/*}}>*/}
-                {/*<option value="HEADING">Heading Widget</option>*/}
-                {/*<option value="PARAGRAPH">Paragraph Widget</option>*/}
-                {/*<option value="LIST">List Widget</option>*/}
-                {/*<option value="IMAGE">Image Widget</option>*/}
-                {/*<option value="LINK">Link Widget</option>*/}
-            {/*</select>*/}
             <div hidden={preview}>
             <label htmlFor="text">Heading text</label>
             <input ref={node => text = node}
@@ -37,7 +21,7 @@ export const HeadingWidget = ({widget, updateWidget, preview}) =>
                    placeholder="Heading text"
                    id="text"
                    value={widget.text}/>
-            <label htmlFor="size">Heading size</label>
+            <label className="webdev-margin-top" htmlFor="size">Heading size</label>
             <select onChange={() => {
                 widget.size = parseInt(size.value);
                 console.log("size: "+ widget.size)
@@ -51,7 +35,7 @@ export const HeadingWidget = ({widget, updateWidget, preview}) =>
                 <option value='2'>Heading 2</option>
                 <option value='3'>Heading 3</option>
             </select>
-            <label htmlFor="name">Widget name</label>
+            <label className="webdev-margin-top" htmlFor="name">Widget name</label>
             <input onChange={() => {
                 widget.name = name.value;
                 updateWidget(widget)
@@ -61,7 +45,7 @@ export const HeadingWidget = ({widget, updateWidget, preview}) =>
                    placeholder="Widget name"
                    value={widget.name}
                    id="name"/>
-            <h4>Preview</h4>
+            <h4 className="webdev-margin-top">Preview</h4>
             </div>
             {widget.size === 1 && <h1>{widget.text}</h1>}
             {widget.size === 2 && <h2>{widget.text}</h2>}

@@ -3,6 +3,8 @@ import ModuleListItem from '../components/ModuleListItem';
 import ModuleService from '../services/ModuleService';
 import CourseService from '../services/CourseService';
 import ReactDOM from "react-dom";
+import ModuleEditor from "./ModuleEditor";
+import {Route} from 'react-router-dom'
 
 class ModuleList extends React.Component {
 
@@ -129,7 +131,8 @@ class ModuleList extends React.Component {
 
     render(){
         return (
-            <div>
+            <div className="row">
+                <div className="col-4">
                 <h2>Modules for course: {this.state.courseTitle}</h2>
                 <input className="form-control"
                        ref="moduleInput"
@@ -159,6 +162,15 @@ class ModuleList extends React.Component {
                 <ul className="list-group">
                     {this.renderListOfModules()}
                 </ul>
+                </div>
+                <div className="col-8">
+                    {/*<Route path="/module/:moduleId"*/}
+                    <Route path="/course/:courseId/module/:moduleId"
+                           component={ModuleEditor}
+                           courseId={this.state.courseId}/>
+                        {/*<LessonTabs/>*/}
+                    {/*</Route>*/}
+                </div>
             </div>
         )
     }

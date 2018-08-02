@@ -2,7 +2,6 @@ import React from 'react'
 
 export const ListWidget = ({widget, updateWidget, preview}) => {
     let text
-    // let ordered
     let listType
     let name
 
@@ -22,29 +21,19 @@ export const ListWidget = ({widget, updateWidget, preview}) => {
                       value={widget.listItems || ''}
                       id="list-text">
             </textarea>
-            {/*<label>*/}
-                {/*<input ref={node => ordered = node}*/}
-                       {/*onClick={() => {*/}
-                           {/*widget.ordered = ordered.checked*/}
-                           {/*updateWidget(widget)*/}
-                       {/*}}*/}
-                       {/*checked={widget.ordered}*/}
-                       {/*type="checkbox"/>Ordered*/}
-            {/*</label>*/}
-            <label htmlFor="listType">List type</label>
+            <label className="webdev-margin-top" htmlFor="listType">List type</label>
             <select ref={node => listType = node}
                     className="form-control"
                     id="listType"
                     value={widget.listType}
                     onChange={() => {
-                // widget.ordered = ordered.checked
                 widget.listType = listType.value
                 updateWidget(widget)
             }}>
                 <option value="unordered">Unordered</option>
                 <option value="ordered">Ordered</option>
             </select>
-            <label htmlFor="list-name">Widget name</label>
+            <label className="webdev-margin-top" htmlFor="list-name">Widget name</label>
             <input onChange={() => {
                 widget.name = name.value;
                 updateWidget(widget)
@@ -54,7 +43,7 @@ export const ListWidget = ({widget, updateWidget, preview}) => {
                    placeholder="Widget name"
                    value={widget.name}
                    id="list-name"/>
-            <h4>Preview</h4>
+            <h4 className="webdev-margin-top">Preview</h4>
             </div>
             {widget.listType === "unordered" && widget.listItems !== '' &&
             <ul>

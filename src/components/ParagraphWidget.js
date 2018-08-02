@@ -18,7 +18,7 @@ export const ParagraphWidget = ({widget, updateWidget, preview}) => {
                           updateWidget(widget);
                       }}
                       value={widget.text}></textarea>
-            <label htmlFor="paragraph-name">Widget name</label>
+            <label className="webdev-margin-top" htmlFor="paragraph-name">Widget name</label>
             <input onChange={() => {
                 widget.name = name.value;
                 updateWidget(widget)
@@ -28,7 +28,7 @@ export const ParagraphWidget = ({widget, updateWidget, preview}) => {
                    placeholder="Widget name"
                    value={widget.name}
                    id="paragraph-name"/>
-            <h4>Preview</h4>
+            <h4 className="webdev-margin-top">Preview</h4>
             </div>
             {widget.text}
         </div>

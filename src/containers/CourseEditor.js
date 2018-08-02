@@ -28,23 +28,21 @@ class CourseEditor extends React.Component{
 
     render() {
         return(
-            <Router>
                 <div>
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-12">
                             <ModuleList courseId={this.state.courseId}/>
                         </div>
-                        <div className="col-8">
-                            {/*<Route path="/module/:moduleId"*/}
-                            <Route path="/course/:courseId/module/:moduleId"
-                                   component={ModuleEditor}
-                                   courseId={this.state.courseId}>
-                                {/*<LessonTabs/>*/}
-                            </Route>
-                        </div>
+                        {/*<div className="col-8">*/}
+                            {/*/!*<Route path="/module/:moduleId"*!/*/}
+                            {/*<Route path="/course/:courseId/module/:moduleId"*/}
+                                   {/*component={ModuleEditor}*/}
+                                   {/*courseId={this.state.courseId}>*/}
+                                {/*/!*<LessonTabs/>*!/*/}
+                            {/*</Route>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
-            </Router>
         )
     }
 }

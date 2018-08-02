@@ -25,7 +25,6 @@ const dispatcherToPropertyMapper = dispatch => (
         }),
         createWidget: () => dispatch({
             type: 'CREATE_WIDGET'
-            // widget: widget
         }),
         updateWidget: widget => dispatch({
             type: 'UPDATE_WIDGET',

@@ -19,7 +19,7 @@ export const LinkWidget = ({widget, updateWidget, preview}) => {
                        widget.text = text.value;
                        updateWidget(widget)
                    }}></input>
-            <label htmlFor="link-url">Link URL</label>
+            <label className="webdev-margin-top" htmlFor="link-url">Link URL</label>
             <input ref={node => href = node}
                    className="form-control"
                    placeholder="Link URL"
@@ -29,7 +29,7 @@ export const LinkWidget = ({widget, updateWidget, preview}) => {
                        widget.href = href.value;
                        updateWidget(widget)
                    }}></input>
-            <label htmlFor="link-name">Widget name</label>
+            <label className="webdev-margin-top" htmlFor="link-name">Widget name</label>
             <input onChange={() => {
                 widget.name = name.value;
                 updateWidget(widget)
@@ -39,7 +39,7 @@ export const LinkWidget = ({widget, updateWidget, preview}) => {
                    placeholder="Widget name"
                    value={widget.name}
                    id="link-name"/>
-            <h4>Preview</h4>
+            <h4 className="webdev-margin-top">Preview</h4>
             </div>
             <a href={widget.href}>{widget.text}</a>
         </div>

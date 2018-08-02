@@ -12,9 +12,6 @@ class WidgetListComponent extends React.Component{
         let widgetTitle;
         let widgetType;
         let widgetName;
-        // this.props.loadAllWidgets();
-        // this.props.findAllWidgetsForTopic(this.props.topicId)
-        // console.log('topic id hrer: '+this.props.topicId)
     }
 
     componentDidMount(){}
@@ -26,29 +23,20 @@ class WidgetListComponent extends React.Component{
     }
 
     render(){
-        // let widgetType;
-        // let self = this
         return(
             <div>
-                <div className="pull-right">
-                    Preview
+                <div className="pull-right webdev-toggle-button">
                     <ToggleButton onToggle={this.props.switchPreview}
                                   value={this.props.preview}/>
                 </div>
+                <h5 className="pull-right webdev-toggle-text">Preview</h5>
                 <button onClick={() => this.props.saveWidgets(this.props.topicId)}
                         className="btn btn-success float-right">Save</button>
-                <h1>Widget List ({this.props.widgets.length})</h1>
+                <h3 className="webdev-margin-top-bottom">Widget List (count: {this.props.widgets.length})</h3>
                 <ul className="list-group">
                     <button onClick={() => {
-                        // let widget = {
-                        //     title: this.widgetTitle.value,
-                        //     id: (new Date()).getTime(),
-                        //     widgetType: this.widgetType.value
-                        //     // widgetType: "LINK"
-                        // };
                         this.props.createWidget()
-                        // this.widgetTitle.value = '';
-                    }} className="btn btn-success"
+                    }} className="btn btn-primary"
                             hidden={this.props.preview}>Add Widget</button>
                     {this.props.widgets.sort((a,b) => a.widgetOrder - b.widgetOrder).map((widget, index)=>{
                         widget.widgetOrder = index;
@@ -56,11 +44,11 @@ class WidgetListComponent extends React.Component{
                         return(
                         <li className="list-group-item"
                             key={index}>
-                            {/*<h3>{widget.name} ({widget.id}) - {widget.widgetType} Widget</h3>*/}
                             <div hidden={this.props.preview}>
-                            <button className="float-right btn btn-danger"
+                            <button className="pull-right btn btn-danger webdev-close"
                                     onClick={() => this.props.deleteWidget(widget.id)}>
-                                Delete</button>
+                                <i className="fa fa-times"></i>
+                            </button>
                             <select id="widget-dropdown"
                                     value={widget.widgetType}
                                     ref={node => widgetType = node}
@@ -68,7 +56,7 @@ class WidgetListComponent extends React.Component{
                                         widget.widgetType = widgetType.value;
                                     this.props.updateWidget(widget);
                                     }}
-                                    className="float-right form-control">
+                                    className="float-right form-control webdev-close">
                                 <option value="HEADING">Heading Widget</option>
                                 <option value="PARAGRAPH">Paragraph Widget</option>
                                 <option value="LIST">List Widget</option>
@@ -77,13 +65,13 @@ class WidgetListComponent extends React.Component{
                             </select>
                             <button onClick={() => this.props.down(widget)}
                                     hidden={widget.widgetOrder===this.props.widgets.length-1}
-                                    className="float-right btn btn-warning">
-                                Down
+                                    className="float-right btn btn-warning webdev-close">
+                                <i className="fa fa-arrow-down"></i>
                             </button>
                             <button onClick={() => this.props.up(widget)}
                                     hidden={widget.widgetOrder===0}
                                     className="float-right btn btn-warning">
-                                Up
+                                <i className="fa fa-arrow-up"></i>
                             </button>
                             </div>
                             <div>

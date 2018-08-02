@@ -36,7 +36,7 @@ class LessonTabItem extends React.Component{
                     </Link>
                     <i onClick={() => {
                         this.deleteLesson()}
-                    } className="fa fa-times"></i>
+                    } className="fa fa-times webdev-close"></i>
                 </div>
             </li>
         )

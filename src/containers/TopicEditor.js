@@ -29,7 +29,6 @@ class TopicEditor extends React.Component{
         return(
                 <div>
                     <WidgetListContainer topicId={this.state.topicId}/>
-                    {console.log("we have the topic hereeeee: "+this.state.topicId)}
                 </div>
         )
     }

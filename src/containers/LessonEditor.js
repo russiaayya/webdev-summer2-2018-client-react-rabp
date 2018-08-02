@@ -28,7 +28,6 @@ class LessonEditor extends React.Component{
 
     render() {
         return(
-            <Router>
                 <div>
                     {/*<h3>Editing lesson: {this.state.lessonId}</h3>*/}
                     <div>
@@ -53,7 +52,6 @@ class LessonEditor extends React.Component{
                     {/*</div>*/}
                     {/*</div>*/}
                 </div>
-            </Router>
         )
     }
 }

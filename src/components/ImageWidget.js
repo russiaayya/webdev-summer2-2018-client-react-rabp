@@ -18,7 +18,7 @@ export const ImageWidget = ({widget, updateWidget, preview}) => {
                           widget.src = src.value;
                           updateWidget(widget)
                       }}></input>
-            <label htmlFor="image-name">Widget name</label>
+            <label className="webdev-margin-top" htmlFor="image-name">Widget name</label>
             <input onChange={() => {
                 widget.name = name.value;
                 updateWidget(widget)
@@ -28,7 +28,7 @@ export const ImageWidget = ({widget, updateWidget, preview}) => {
                    placeholder="Widget name"
                    value={widget.name}
                    id="image-name"/>
-            <h4>Preview</h4>
+            <h4 className="webdev-margin-top">Preview</h4>
             </div>
             <img src={widget.src} className="img-fluid"/>
         </div>
