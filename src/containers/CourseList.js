@@ -3,6 +3,8 @@ import CourseRow from "../components/CourseRow";
 import CourseCard from "../components/CourseCard";
 import CourseService from "../services/CourseService";
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 class CourseList extends React.Component {
     constructor() {
@@ -16,7 +18,8 @@ class CourseList extends React.Component {
         this.state = {
             course: {title: ''},
             courses: [],
-            cid: ''
+            cid: '',
+            cardView: false
         }
     }
 
@@ -44,6 +47,29 @@ class CourseList extends React.Component {
                                       deleteCourse={self.deleteCourse}
                                       updateCourse={self.updateCourse}
                                       selectCourse={self.selectCourse}/>
+                }
+            )
+        }
+        return (
+            courses
+        )
+    }
+
+    renderCourseCards() {
+        var self = this
+        let courses = null;
+        if(this.state) {
+            courses = this.state.courses.map(
+                function (course) {
+                    return (
+
+                        <CourseCard key={course.id}
+                                       course={course}
+                                       deleteCourse={self.deleteCourse}
+                                       updateCourse={self.updateCourse}
+                                       selectCourse={self.selectCourse}/>
+
+                )
                 }
             )
         }
@@ -102,29 +128,17 @@ class CourseList extends React.Component {
         ReactDOM.findDOMNode(this.refs.courseInput).value = "";
     };
 
-    renderCourseCards() {
-        var self = this
-        let courses = null;
-        if(this.state) {
-            courses = this.state.courses.map(
-                function (course) {
-                    return <CourseCard key={course.id}
-                                      course={course}
-                                      deleteCourse={self.deleteCourse}
-                                      updateCourse={self.updateCourse}
-                                      selectCourse={self.selectCourse}/>
-                }
-            )
-        }
-        return (
-            courses
-        )
-    }
-
     render() {
+        let view;
         return (
             <div>
                 <h2>Course List</h2>
+                <label><input
+                    ref={node => view = node}
+                              onClick={() => {
+                                  this.setState({cardView:view.checked})
+                              }}
+                              type="checkbox"/> Card deck view</label>
                 <div className="table-responsive">
                 <table className="table">
                     <thead>
@@ -140,16 +154,18 @@ class CourseList extends React.Component {
                         <th><button onClick={this.updateCourse}
                                     className="btn btn-primary">Update</button></th>
                     </tr>
-                    <tr><th>Title</th>
+                    <tr hidden={this.state.cardView}><th>Title</th>
                         <th>Owned by</th>
                         <th>Last modified</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody hidden={this.state.cardView}>
                     {this.renderCourseRows()}
-                    {/*{this.renderCourseCards()}*/}
                     </tbody>
                 </table>
+                </div>
+                <div hidden={!(this.state.cardView)} className="card-deck">
+                    {this.renderCourseCards()}
                 </div>
             </div>
         )
